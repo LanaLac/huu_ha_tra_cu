@@ -78,12 +78,12 @@
 <body class="bg-tea-bg text-tea-ink flex flex-col min-h-screen selection:bg-tea-terracotta selection:text-white">
 
     <!-- =====================================================================
-         1. TOP BAR (Thông báo Showroom Online phía trên cùng)
+         1. TOP BAR (Thanh thông báo ưu đãi phía trên cùng)
     ====================================================================== -->
-    <div class="bg-tea-ink text-tea-bg text-[11px] sm:text-xs tracking-[0.05em] py-2.5 px-4 text-center font-medium">
+    <div class="bg-tea-ink text-tea-bg text-[11px] sm:text-xs tracking-[0.06em] py-2.5 px-4 text-center font-medium">
         <p id="top-bar-text">
-            Lưu ý: Đây chỉ là <span class="font-semibold text-[#E5C9B3]">Showroom Online</span> trưng bày sản phẩm, không phải địa chỉ đặt hàng trực tiếp &bull; Đặt hàng vui lòng nhắn Zalo: 
-            <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="underline font-semibold text-[#E5C9B3] hover:text-white transition">0369 875 491</a>
+            Lưu ý: Đây chỉ là <span class="font-semibold text-[#E5C9B3] underline">Showroom Online</span> trưng bày (không nhận đặt hàng trực tiếp trên web) &bull; Đặt hàng vui lòng nhắn trực tiếp 
+            <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-bold text-[#E5C9B3] hover:text-white underline ml-1">Zalo: 0369 875 491</a>
         </p>
     </div>
 
@@ -531,7 +531,7 @@
     </div>
 
     <!-- =====================================================================
-         3. COLLECTION HERO HEADER (Tiêu đề trang danh mục chuẩn Lemai)
+         10. TOAST NOTIFICATION (Thông báo tinh tế thay thế alert)
     ====================================================================== -->
     <section id="collection" class="bg-tea-surface/70 border-b border-tea-border py-12 sm:py-16 lg:py-20 px-4">
         <div class="max-w-4xl mx-auto text-center">
@@ -559,11 +559,11 @@
                 giúp trọn vẹn từng khoảnh khắc tĩnh tại bên chén trà thơm.
             </p>
 
-            <!-- Dòng lưu ý Showroom Online tinh tế (không khung viền) -->
-            <p class="mt-5 text-xs sm:text-[13px] text-tea-ink max-w-2xl mx-auto leading-relaxed">
-                <span class="font-semibold text-tea-terracotta uppercase tracking-wider">Showroom Online:</span> 
-                Website chỉ trưng bày mẫu &amp; tham khảo, <strong>không nhận đặt đơn tự động</strong>. Quý khách đặt hàng vui lòng nhắn trực tiếp qua 
-                <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold text-[#0068FF] hover:underline">Zalo: 0369 875 491</a>.
+            <!-- Lưu ý Showroom Online (Chỉ để chữ, không khung) -->
+            <p class="mt-5 text-xs sm:text-[13.5px] text-tea-ink font-medium leading-relaxed max-w-2xl mx-auto">
+                <span class="text-tea-terracotta font-semibold uppercase tracking-wider">Lưu ý Showroom Online:</span> 
+                Đây chỉ là showroom trưng bày mẫu, không nhận đặt hàng trực tiếp trên web. Đặt hàng vui lòng nhắn trực tiếp qua 
+                <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="text-[#0068FF] hover:underline font-bold">Zalo: 0369 875 491</a>.
             </p>
         </div>
     </section>
@@ -644,7 +644,7 @@
 
                 <!-- Hiển thị tổng số sản phẩm -->
                 <span id="product-count" class="text-xs text-tea-muted pl-1">
-                    Hiển thị 14 sản phẩm
+                    Hiển thị 12 sản phẩm
                 </span>
             </div>
         </div>
@@ -799,16 +799,14 @@
 
                     <!-- Mô tả nghệ thuật -->
                     <p id="qv-description" class="text-xs sm:text-sm text-tea-muted font-light leading-relaxed"></p>
-
-                    <!-- Lưu ý Showroom Online trong Xem nhanh (chỉ chữ, không khung) -->
-                    <p class="mt-4 text-xs text-tea-ink leading-relaxed">
-                        <span class="font-semibold text-tea-terracotta">Showroom Online:</span> Trang web chỉ trưng bày mẫu, không phải nơi chốt đơn tự động. Vui lòng nhắn trực tiếp <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold text-[#0068FF] hover:underline">Zalo 0369 875 491</a> để đặt hàng.
-                    </p>
                 </div>
 
                 <!-- Chọn số lượng, Thêm vào giỏ & Đặt hàng qua Zalo -->
-                <div class="mt-5 pt-4 border-t border-tea-border">
+                <div class="mt-6 pt-4 border-t border-tea-border">
                     <div id="qv-action-area" class="space-y-2.5">
+                        <p class="text-[11.5px] sm:text-xs text-tea-ink leading-snug">
+                            <span class="font-semibold text-tea-terracotta">Showroom Online:</span> Không nhận đặt hàng trực tiếp tại web. Đặt hàng vui lòng nhắn trực tiếp <strong>Zalo</strong> bên dưới.
+                        </p>
                         <div class="flex items-center gap-3">
                             <!-- Bộ chọn số lượng -->
                             <div class="flex items-center border border-tea-border rounded-lg bg-white">
@@ -860,44 +858,65 @@
                 </button>
             </div>
 
-            <!-- Dòng thông báo Showroom Online trong Giỏ hàng (chỉ chữ, không khung) -->
-            <p class="px-6 pt-3.5 text-xs text-tea-ink leading-relaxed">
-                <span class="font-semibold text-tea-terracotta">Showroom Online:</span> Đây là danh sách lưu tạm để tham khảo, không phải địa chỉ đặt hàng trực tiếp. Để đặt mua, quý khách vui lòng bấm nút gửi đơn qua Zalo <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-[#0068FF]">0369 875 491</a>.
-            </p>
+            <!-- Thông báo Showroom Online trong Giỏ Hàng (Chỉ để chữ) -->
+            <div class="px-6 py-3 border-b border-tea-border">
+                <p id="free-ship-text" class="text-xs text-tea-ink leading-relaxed">
+                    <strong class="text-tea-terracotta font-semibold">Showroom Online:</strong> Đây chỉ là danh sách chọn mẫu tạm tính. Đặt hàng vui lòng bấm <strong>Đặt hàng tại Zalo</strong> bên dưới để nhắn trực tiếp shop.
+                </p>
+                <div class="hidden"><div id="free-ship-bar" style="width: 0%"></div></div>
+            </div>
 
             <!-- Danh sách sản phẩm trong giỏ -->
             <div id="cart-items-container" class="flex-1 overflow-y-auto px-6 py-4 divide-y divide-tea-border">
                 <!-- Render tự động bằng JS -->
             </div>
 
-            <!-- Footer Giỏ Hàng: Tổng tiền & Đặt hàng qua Zalo -->
+            <!-- Footer Giỏ Hàng: Tổng tiền & Form Đặt Hàng Nhanh -->
             <div id="cart-footer" class="hidden border-t border-tea-border bg-tea-surface/50 px-6 py-5 space-y-4">
                 <div class="space-y-1.5 text-sm">
                     <div class="flex justify-between text-tea-muted">
                         <span>Tạm tính:</span>
                         <span id="cart-subtotal">0đ</span>
                     </div>
+                    <div class="flex justify-between text-tea-muted">
+                        <span>Phí vận chuyển:</span>
+                        <span id="cart-shipping">35.000đ</span>
+                    </div>
                     <div class="flex justify-between text-base font-semibold text-tea-ink pt-2 border-t border-tea-border">
-                        <span>Tổng giá trị tham khảo:</span>
+                        <span>Tổng thanh toán:</span>
                         <span id="cart-total" class="text-tea-terracotta">0đ</span>
                     </div>
                 </div>
 
-                <!-- Nút Đặt hàng tại Zalo -->
+                <!-- Nút Đặt hàng tại Zalo & Form đặt hàng nhanh -->
                 <div id="cart-action-buttons" class="space-y-2.5">
                     <button type="button" onclick="orderCartViaZalo()" class="w-full py-3 bg-[#0068FF] hover:bg-[#0055D4] text-white text-sm font-medium rounded-lg transition flex items-center justify-center gap-2 shadow-xs">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.03 2 11c0 2.76 1.38 5.23 3.55 6.89-.15 1.31-.68 2.66-1.39 3.63-.21.29-.01.7.35.67 1.83-.14 3.79-.74 5.14-1.48.76.19 1.54.29 2.35.29 5.52 0 10-4.03 10-9s-4.48-9-10-9zm-4.2 11.4H5.3c-.28 0-.5-.22-.5-.5 0-.12.04-.23.12-.32l2.15-2.68H5.4c-.25 0-.45-.2-.45-.45s.2-.45.45-.45h2.4c.28 0 .5.22.5.5 0 .12-.04.23-.12.32l-2.15 2.68h1.77c.25 0 .45.2.45.45s-.2.45-.45.45zm3.75-.45c0 .25-.2.45-.45.45s-.45-.2-.45-.45v-.22c-.3.24-.68.38-1.1.38-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75c.42 0 .8.14 1.1.38v-.22c0-.25.2-.45.45-.45s.45.2.45.45v3.18zm1.55 0c0 .25-.2.45-.45.45s-.45-.2-.45-.45V8.6c0-.25.2-.45.45-.45s.45.2.45.45v4.35zm2.45.16c-.99 0-1.8-.81-1.8-1.8s.81-1.8 1.8-1.8 1.8.81 1.8 1.8-.81 1.8-1.8 1.8z"/>
                         </svg>
-                        <span>Chép danh sách & Nhắn Zalo đặt hàng</span>
+                        <span>Đặt hàng tại Zalo</span>
+                    </button>
+                    <button id="toggle-checkout-btn" onclick="toggleCheckoutForm()" class="w-full py-2.5 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-xs sm:text-sm font-medium rounded-lg transition">
+                        Hoặc điền thông tin đặt hàng (COD)
                     </button>
                 </div>
+
+                <!-- Form Đặt Hàng Nhanh (Ẩn mặc định, mở khi bấm nút trên) -->
+                <form id="quick-checkout-form" onsubmit="submitOrder(event)" class="hidden space-y-2.5 pt-2 border-t border-tea-border">
+                    <p class="text-xs font-medium text-tea-ink">Thông tin nhận trà cụ (Kiểm tra hàng trước khi thanh toán):</p>
+                    <input type="text" id="cust-name" required placeholder="Họ và tên người nhận *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
+                    <input type="tel" id="cust-phone" required placeholder="Số điện thoại liên hệ *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
+                    <input type="text" id="cust-address" required placeholder="Địa chỉ giao hàng chi tiết *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
+                    <button type="submit" class="w-full py-3 bg-tea-terracotta hover:bg-tea-terracottaDark text-white text-sm font-medium rounded-lg transition">
+                        Xác nhận đặt hàng (COD)
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
     <!-- =====================================================================
-         10. TOAST NOTIFICATION (Thông báo tinh tế thay thế alert)
+         9. TOAST NOTIFICATION (Thông báo tinh tế thay thế alert)
     ====================================================================== -->
     <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="bg-tea-ink text-tea-bg px-5 py-3.5 rounded-xl shadow-xl border border-white/10 flex items-center gap-3 max-w-sm">
@@ -907,7 +926,7 @@
     </div>
 
     <!-- =====================================================================
-         11. JAVASCRIPT DỮ LIỆU SẢN PHẨM & TƯƠNG TÁC (Dễ dàng chỉnh sửa)
+         10. JAVASCRIPT DỮ LIỆU SẢN PHẨM & TƯƠNG TÁC (Dễ dàng chỉnh sửa)
     ====================================================================== -->
     <script>
         /**
@@ -1142,16 +1161,77 @@
             }
         ];
 
-        // Khởi tạo danh sách PRODUCTS từ bộ nhớ trình duyệt (hoặc dùng mặc định) & đồng bộ mã chất liệu Gốm / Gỗ
-        let PRODUCTS = (JSON.parse(localStorage.getItem('tinh_tra_cu_products_v2')) || [...DEFAULT_PRODUCTS]).map(p => {
-            if (p.material === 'gom-su') {
-                return { ...p, material: 'gom', materialName: p.materialName || 'Gốm' };
+        // ===================================================================
+        // CẤU HÌNH KẾT NỐI GOOGLE SHEETS TỰ ĐỘNG ĐỒNG BỘ SẢN PHẨM
+        // ===================================================================
+        const GOOGLE_SHEET_ID = '1WpR-I_yV5reZpq8uFKYfEKaNrbBWmQ2OCcIHPi3aAbc';
+        const GOOGLE_SHEET_TAB = 'SanPham';
+
+        // Khởi tạo danh sách PRODUCTS ban đầu từ dữ liệu mặc định (sẽ tự cập nhật ngay khi tải xong Google Sheets)
+        let PRODUCTS = [...DEFAULT_PRODUCTS];
+
+        async function loadProductsFromGoogleSheets() {
+            if (!GOOGLE_SHEET_ID) return;
+            const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(GOOGLE_SHEET_TAB)}`;
+            try {
+                const res = await fetch(url);
+                const text = await res.text();
+                const match = text.match(/google\.visualization\.Query\.setResponse\((.*)\);?$/s);
+                if (!match || !match[1]) return;
+
+                const json = JSON.parse(match[1]);
+                const rows = json.table && json.table.rows ? json.table.rows : [];
+                if (rows.length === 0) return;
+
+                const parsedProducts = rows.map((row, index) => {
+                    const cells = row.c || [];
+                    const getVal = (idx) => (cells[idx] && cells[idx].v !== null && cells[idx].v !== undefined) ? cells[idx].v : '';
+
+                    const id = String(getVal(0) || `sp-${index + 1}`).trim();
+                    const name = String(getVal(1) || '').trim();
+                    if (!name || name.toLowerCase() === 'name') return null;
+
+                    const category = String(getVal(2) || 'am-tu-sa').trim();
+                    const material = String(getVal(3) || 'dat-tu-sa').trim();
+                    const materialName = String(getVal(4) || '').trim();
+                    const spec = String(getVal(5) || '').trim();
+                    const origin = String(getVal(6) || 'Chế tác thủ công').trim();
+                    const rawPrice = getVal(7);
+                    const price = typeof rawPrice === 'number' ? rawPrice : (parseInt(String(rawPrice).replace(/[^0-9]/g, ''), 10) || 0);
+                    const badge = String(getVal(8) || '').trim();
+                    const rawStock = getVal(9);
+                    const inStock = rawStock === true || String(rawStock).toUpperCase() === 'TRUE' || rawStock === '';
+                    const image = String(getVal(10) || '').trim() || `https://placehold.co/600x750/EFECE6/4A3525?text=${encodeURIComponent(name)}`;
+                    const description = String(getVal(11) || '').trim();
+
+                    return {
+                        id,
+                        name,
+                        category,
+                        categoryName: CATEGORY_LABELS[category] || 'Trà Cụ & Trà',
+                        material,
+                        materialName,
+                        spec,
+                        origin,
+                        price,
+                        badge: inStock ? badge : 'Hết hàng',
+                        inStock,
+                        featuredOrder: index + 1,
+                        image,
+                        description
+                    };
+                }).filter(Boolean);
+
+                if (parsedProducts.length > 0) {
+                    PRODUCTS = parsedProducts;
+                    renderProducts();
+                    renderAdminProductList();
+                    renderCart();
+                }
+            } catch (err) {
+                console.warn('Không thể tải dữ liệu từ Google Sheets, đang dùng dữ liệu dự phòng:', err);
             }
-            if (p.material === 'go-tu-nhien') {
-                return { ...p, material: 'go', materialName: p.materialName || 'Gỗ' };
-            }
-            return p;
-        });
+        }
 
         function persistProducts() {
             try {
@@ -1536,9 +1616,11 @@
             const container = document.getElementById('cart-items-container');
             const footer = document.getElementById('cart-footer');
             const subtitle = document.getElementById('cart-subtitle');
+            const freeShipText = document.getElementById('free-ship-text');
+            const freeShipBar = document.getElementById('free-ship-bar');
 
             const totalQty = state.cart.reduce((sum, item) => sum + item.qty, 0);
-            subtitle.textContent = `${totalQty} sản phẩm đã lưu tạm`;
+            subtitle.textContent = `${totalQty} sản phẩm đã chọn`;
 
             if (state.cart.length === 0) {
                 container.innerHTML = `
@@ -1546,14 +1628,15 @@
                         <svg class="w-12 h-12 text-tea-border mb-3" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/>
                         </svg>
-                        <p class="font-serif text-xl text-tea-ink mb-1">Chưa có sản phẩm nào</p>
-                        <p class="text-xs text-tea-muted mb-5">Hãy chọn các mẫu trà cụ ưng ý để gửi qua Zalo đặt hàng.</p>
+                        <p class="font-serif text-xl text-tea-ink mb-1">Giỏ hàng đang trống</p>
+                        <p class="text-xs text-tea-muted mb-5">Hãy chọn cho mình một trà cụ ưng ý.</p>
                         <button onclick="closeCart()" class="px-5 py-2 border border-tea-ink text-tea-ink text-xs rounded-full hover:bg-tea-ink hover:text-tea-bg transition">
-                            Tiếp tục xem Showroom
+                            Tiếp tục khám phá
                         </button>
                     </div>
                 `;
                 footer.classList.add('hidden');
+                freeShipText.innerHTML = `<strong class="text-tea-terracotta font-semibold">Showroom Online:</strong> Đây chỉ là danh sách chọn mẫu tạm tính. Đặt hàng vui lòng nhắn trực tiếp <strong>Zalo: 0369 875 491</strong>.`;
                 return;
             }
 
@@ -1590,8 +1673,24 @@
                 `;
             }).join('');
 
+            // Tính toán freeship & tổng tiền
+            const remaining = Math.max(0, FREE_SHIP_THRESHOLD - subtotal);
+            const progress = Math.min(100, (subtotal / FREE_SHIP_THRESHOLD) * 100);
+            freeShipBar.style.width = `${progress}%`;
+
+            freeShipText.innerHTML = `<strong class="text-tea-terracotta font-semibold">Showroom Online:</strong> Web không nhận đặt trực tiếp. Vui lòng bấm <strong>Đặt hàng tại Zalo</strong> bên dưới để gửi danh sách mẫu này cho shop.`;
+
+            const shipping = remaining === 0 ? 0 : SHIPPING_FEE;
             document.getElementById('cart-subtotal').textContent = formatVND(subtotal);
-            document.getElementById('cart-total').textContent = formatVND(subtotal);
+            document.getElementById('cart-shipping').textContent = shipping === 0 ? 'Miễn phí' : formatVND(shipping);
+            document.getElementById('cart-total').textContent = formatVND(subtotal + shipping);
+        }
+
+        function toggleCheckoutForm() {
+            const form = document.getElementById('quick-checkout-form');
+            const actionBtns = document.getElementById('cart-action-buttons');
+            form.classList.toggle('hidden');
+            actionBtns.classList.toggle('hidden');
         }
 
         function orderQuickViewViaZalo() {
@@ -1600,21 +1699,6 @@
             const qty = state.qvQuantity || 1;
             const total = p.price * qty;
             const msg = `Chào Hữu Hà Trà Cụ, mình muốn đặt sản phẩm:\n- ${p.name} (${p.spec})\n- Số lượng: ${qty}\n- Tạm tính: ${formatVND(total)}`;
-            copyTextAndOpenZalo(msg);
-        }
-
-        function orderCartViaZalo() {
-            if (!state.cart || state.cart.length === 0) return;
-            let subtotal = 0;
-            const itemLines = state.cart.map((item, idx) => {
-                const p = PRODUCTS.find(prod => prod.id === item.id);
-                if (!p) return '';
-                const lineTotal = p.price * item.qty;
-                subtotal += lineTotal;
-                return `${idx + 1}. ${p.name} x${item.qty} - ${formatVND(lineTotal)}`;
-            }).filter(Boolean);
-
-            const msg = `Chào Hữu Hà Trà Cụ, mình muốn đặt các mẫu đã chọn trên Showroom Online:\n${itemLines.join('\n')}\n- Tổng giá trị tham khảo: ${formatVND(subtotal)}`;
             copyTextAndOpenZalo(msg);
         }
 
@@ -1861,7 +1945,7 @@
                     categoryName: CATEGORY_LABELS[category],
                     material,
                     materialName: formattedMaterialName,
-                    materialNote: (material === 'gom' || material === 'go') ? materialNote : '',
+                        materialNote: (material === 'gom' || material === 'go') ? materialNote : '',
                     spec,
                     origin,
                     price,
@@ -2121,13 +2205,14 @@
             showToast('Đã khôi phục ảnh mặc định.');
         }
 
-        // Khởi chạy ứng dụng khi tải trang
+        // Khởi chạy ứng dụng khi tải trang & tự động lấy dữ liệu mới nhất từ Google Sheets
         window.addEventListener('DOMContentLoaded', () => {
             syncAdminUI();
             applySavedStoryImage();
             renderProducts();
             updateCartBadge();
             document.getElementById('admin-total-count').textContent = PRODUCTS.length;
+            loadProductsFromGoogleSheets();
         });
     </script>
 </body>
