@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HỮU HÀ TRÀ CỤ | Nghệ Thuật Trà Cụ & Gốm Sứ Thủ Công</title>
+    
+    <!-- Google Fonts: Fraunces (Cổ điển bầu bĩnh, mềm mại không gai góc) & Nunito (Chữ bo tròn đều, mượt mà tiếng Việt) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,SOFT,wght@9..144,100,400;9..144,100,500;9..144,100,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Cấu hình bảng màu & Font chữ chuẩn phong cách Trà Đạo Tối Giản -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tea: {
+                            bg: '#FAF8F5',        // Nền trắng ngà / kem nhạt
+                            surface: '#F3EFEA',   // Nền phụ thẻ sản phẩm / banner nhẹ
+                            ink: '#2C2420',       // Chữ nâu trầm / than đậm
+                            muted: '#6E645F',     // Chữ mô tả phụ
+                            terracotta: '#8C5A3C',// Điểm nhấn đất nung / đồng trầm
+                            terracottaDark: '#70452C',
+                            moss: '#5A6B5C',      // Điểm nhấn xanh rêu nhạt
+                            border: '#E6DFD5'     // Đường viền mảnh tinh tế
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Fraunces"', 'Georgia', 'serif'],
+                        sans: ['"Nunito"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Tinh chỉnh hệ thống chữ bo tròn đều, mềm mại, không gai góc */
+        body {
+            background-color: #FAF8F5;
+            color: #2C2420;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 500;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Tiêu đề cổ điển bầu bĩnh (SOFT 100 làm tròn toàn bộ đầu nét và chân chữ) */
+        h1, h2, h3, .font-serif {
+            font-family: 'Fraunces', Georgia, serif;
+            font-variation-settings: "SOFT" 100, "WONK" 0;
+            letter-spacing: 0.015em;
+        }
+        
+        /* Ẩn thanh cuộn ngang trên thanh filter mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Hiệu ứng ảnh sản phẩm zoom mượt khi di chuột */
+        .product-img-zoom {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .product-img-zoom {
+            transform: scale(1.06);
+        }
+    </style>
+</head>
+<body class="bg-tea-bg text-tea-ink flex flex-col min-h-screen selection:bg-tea-terracotta selection:text-white">
+
+    <!-- =====================================================================
+         1. TOP BAR (Thông báo Showroom Online phía trên cùng)
+    ====================================================================== -->
+    <div class="bg-tea-ink text-tea-bg text-[11px] sm:text-xs tracking-[0.05em] py-2.5 px-4 text-center font-medium">
+        <p id="top-bar-text">
+            Lưu ý: Đây chỉ là <span class="font-semibold text-[#E5C9B3]">Showroom Online</span> trưng bày sản phẩm, không phải địa chỉ đặt hàng trực tiếp &bull; Đặt hàng vui lòng nhắn Zalo: 
+            <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="underline font-semibold text-[#E5C9B3] hover:text-white transition">0369 875 491</a>
+        </p>
+    </div>
+
+    <!-- =====================================================================
+         2. HEADER / NAVIGATION (Thanh điều hướng tối giản chuẩn Lemai)
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 bg-tea-bg/95 backdrop-blur-md border-b border-tea-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                
+                <!-- Nút mở Menu Mobile -->
+                <button id="mobile-menu-btn" aria-label="Mở menu" class="lg:hidden p-2 -ml-2 text-tea-ink hover:text-tea-terracotta transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </button>
+
+                <!-- Logo Thương Hiệu (Dễ dàng thay đổi tên shop tại đây - Nhấp đúp để mở khóa quản trị) -->
+                <a href="javascript:void(0)" ondblclick="triggerAdminAccess()" title="Hữu Hà Trà Cụ" class="flex flex-col items-center lg:items-start group select-none">
+                    <div class="flex items-center gap-2">
+                        <span class="font-serif text-xl sm:text-[26px] font-semibold tracking-[0.14em] text-tea-ink group-hover:text-tea-terracotta transition leading-none">
+                            HỮU HÀ TRÀ CỤ
+                        </span>
+                        <span class="hidden sm:inline-flex items-center justify-center border border-tea-terracotta/60 text-tea-terracotta font-serif text-[11px] px-1.5 py-0.5 rounded-sm leading-none">
+                            微瑕
+                        </span>
+                    </div>
+                    <span class="text-[10px] uppercase tracking-[0.28em] text-tea-muted mt-1 hidden sm:block font-semibold">
+                        Nghệ Thuật Trà Đạo
+                    </span>
+                </a>
+
+                <!-- Menu Điều Hướng Chính (Desktop) -->
+                <nav class="hidden lg:flex items-center space-x-8 text-[13px] uppercase tracking-[0.08em] font-semibold">
+                    <a href="#collection" onclick="resetFilters()" class="text-tea-muted hover:text-tea-ink transition py-2">Trang chủ</a>
+                    <div class="relative group py-2">
+                        <button onclick="quickCategoryFilter('all')" class="flex items-center gap-1 text-tea-ink hover:text-tea-terracotta transition">
+                            <span>Trà cụ</span>
+                            <svg class="w-3.5 h-3.5 text-tea-muted group-hover:text-tea-terracotta transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                            </svg>
+                        </button>
+                        <!-- Menu thả xuống Trà cụ -->
+                        <div class="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="bg-tea-bg border border-tea-border rounded-xl shadow-lg py-2 px-1 text-xs normal-case tracking-normal font-medium">
+                                <button onclick="quickCategoryFilter('all')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Tất cả sản phẩm</button>
+                                <button onclick="quickCategoryFilter('am-tu-sa')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Ấm Tử Sa & Ấm Trà</button>
+                                <button onclick="quickCategoryFilter('chen-tong')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Chén Khải & Chén Quân</button>
+                                <button onclick="quickCategoryFilter('khay-tra')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Khay Trà Gỗ & Đá</button>
+                                <button onclick="quickCategoryFilter('dung-cu')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Dụng Cụ Pha Trà</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mục lớn mới: TRÀ -->
+                    <div class="relative group py-2">
+                        <button onclick="quickCategoryFilter('tra')" class="flex items-center gap-1 text-tea-ink hover:text-tea-terracotta transition">
+                            <span>Trà</span>
+                            <svg class="w-3.5 h-3.5 text-tea-muted group-hover:text-tea-terracotta transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                            </svg>
+                        </button>
+                        <!-- Menu thả xuống Các dòng Trà -->
+                        <div class="absolute left-0 top-full pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="bg-tea-bg border border-tea-border rounded-xl shadow-lg py-2 px-1 text-xs normal-case tracking-normal font-medium">
+                                <button onclick="quickTeaTypeFilter('all')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-terracotta font-semibold transition">Tất cả các dòng Trà</button>
+                                <button onclick="quickTeaTypeFilter('hong-tra')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Hồng Trà</button>
+                                <button onclick="quickTeaTypeFilter('bach-tra')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Bạch Trà</button>
+                                <button onclick="quickTeaTypeFilter('pho-nhi-song')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Phổ Nhĩ Sống</button>
+                                <button onclick="quickTeaTypeFilter('pho-nhi-chin')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Phổ Nhĩ Chín</button>
+                                <button onclick="quickTeaTypeFilter('nham-tra')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Nham Trà (Vũ Di)</button>
+                                <button onclick="quickTeaTypeFilter('luc-tra')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Lục Trà</button>
+                                <button onclick="quickTeaTypeFilter('o-long')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Trà Ô Long</button>
+                                <button onclick="quickTeaTypeFilter('long-tinh')" class="w-full text-left px-3.5 py-2 rounded-lg hover:bg-tea-surface text-tea-ink transition">Trà Long Tỉnh</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#story-section" class="text-tea-muted hover:text-tea-ink transition py-2">Câu chuyện nghệ nhân</a>
+                    <a href="#footer-contact" class="text-tea-muted hover:text-tea-ink transition py-2">Liên hệ</a>
+                </nav>
+
+                <!-- Công cụ bên phải: Tìm kiếm, Quản lý SP (ẩn với khách) & Giỏ hàng -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <!-- Nút mở Bảng Quản Lý Sản Phẩm (Chỉ hiện sau khi chủ shop đăng nhập) -->
+                    <div id="admin-toolbar-group" class="hidden items-center gap-1.5">
+                        <button id="admin-open-btn" onclick="openAdminDrawer()" title="Thêm, sửa, xóa sản phẩm trực tiếp"
+                                class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-tea-terracotta/40 bg-tea-surface/80 hover:bg-tea-terracotta hover:text-white text-tea-terracotta text-xs font-medium transition">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                            </svg>
+                            <span class="hidden sm:inline">Quản lý SP</span>
+                            <span class="sm:hidden">QL SP</span>
+                        </button>
+                        <button onclick="logoutAdmin()" title="Khóa chế độ quản trị"
+                                class="p-1.5 rounded-full text-tea-muted hover:text-red-700 hover:bg-red-50 transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Nút mở thanh tìm kiếm -->
+                    <button id="search-toggle-btn" aria-label="Tìm kiếm" class="p-2 text-tea-ink hover:text-tea-terracotta transition rounded-full hover:bg-tea-surface">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                        </svg>
+                    </button>
+
+                    <!-- Nút mở Giỏ hàng -->
+                    <button id="cart-open-btn" aria-label="Giỏ hàng" class="relative p-2 text-tea-ink hover:text-tea-terracotta transition rounded-full hover:bg-tea-surface flex items-center gap-1.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                        </svg>
+                        <span id="cart-badge" class="bg-tea-terracotta text-white text-[11px] font-medium min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Thanh Tìm Kiếm Mở Rộng (Ẩn mặc định, trượt xuống khi bấm kính lúp) -->
+            <div id="search-bar-container" class="hidden pb-4 border-t border-tea-border/60 pt-3">
+                <div class="relative max-w-xl mx-auto">
+                    <input type="text" id="search-input" placeholder="Tìm kiếm ấm tử sa, chén khải, khay trà gỗ óc chó..." 
+                           class="w-full bg-tea-surface/80 border border-tea-border rounded-full pl-11 pr-10 py-2.5 text-sm text-tea-ink placeholder-tea-muted focus:outline-none focus:border-tea-terracotta transition">
+                    <svg class="w-4 h-4 text-tea-muted absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                    </svg>
+                    <button id="clear-search-btn" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-tea-muted hover:text-tea-ink">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile Drawer -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 hidden">
+        <div id="mobile-menu-backdrop" class="fixed inset-0 bg-tea-ink/40 backdrop-blur-xs"></div>
+        <div class="relative w-72 max-w-[80vw] bg-tea-bg h-full p-6 flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-tea-border">
+                    <span class="font-serif text-xl font-semibold tracking-widest">HỮU HÀ TRÀ CỤ</span>
+                    <button id="close-mobile-menu" class="p-1.5 text-tea-muted hover:text-tea-ink">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col space-y-4 text-base">
+                    <a href="#collection" onclick="closeMobileMenu(); resetFilters();" class="text-tea-ink hover:text-tea-terracotta">Trang chủ</a>
+                    <div class="space-y-1.5 pt-2 border-t border-tea-border/60">
+                        <p class="text-xs uppercase tracking-widest text-tea-muted">Danh mục trà cụ</p>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('all');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Tất cả sản phẩm</button>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('am-tu-sa');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Ấm Tử Sa & Ấm Gốm</button>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('chen-tong');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Chén Khải & Chén Quân</button>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('khay-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Khay Trà Gỗ & Đá</button>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('dung-cu');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Dụng Cụ Pha Trà</button>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-tea-border/60">
+                        <p class="text-xs uppercase tracking-widest text-tea-terracotta font-semibold">Danh mục Trà</p>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('all');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta font-medium">Tất cả các dòng Trà</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('hong-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Hồng Trà</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('bach-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Bạch Trà</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('pho-nhi-song');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Phổ Nhĩ Sống</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('pho-nhi-chin');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Phổ Nhĩ Chín</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('nham-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Nham Trà</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('luc-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Lục Trà</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('o-long');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Trà Ô Long</button>
+                        <button onclick="closeMobileMenu(); quickTeaTypeFilter('long-tinh');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Trà Long Tỉnh</button>
+                    </div>
+                    <a href="#story-section" onclick="closeMobileMenu();" class="pt-2 border-t border-tea-border/60 text-tea-ink hover:text-tea-terracotta">Câu chuyện nghệ nhân</a>
+                    <a href="#footer-contact" onclick="closeMobileMenu();" class="text-tea-ink hover:text-tea-terracotta">Liên hệ</a>
+                </nav>
+            </div>
+            <div class="text-xs text-tea-muted border-t border-tea-border pt-4">
+                <p>Zalo tư vấn trà đạo:</p>
+                <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="inline-block font-semibold text-tea-ink hover:text-tea-terracotta mt-1 transition">0369 875 491</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         9. NGĂN KÉO QUẢN LÝ SẢN PHẨM THỦ CÔNG (Admin Product Manager Drawer)
+    ====================================================================== -->
+    <div id="admin-drawer" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div onclick="closeAdminDrawer()" class="fixed inset-0 bg-tea-ink/50 backdrop-blur-xs transition-opacity"></div>
+
+        <!-- Khung ngăn kéo trượt từ phải sang -->
+        <div class="fixed inset-y-0 right-0 max-w-xl w-full bg-tea-bg shadow-2xl flex flex-col border-l border-tea-border z-10">
+            
+            <!-- Header Ngăn Kéo Quản Trị -->
+            <div class="px-6 py-4 bg-tea-surface/70 border-b border-tea-border flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-tea-terracotta font-semibold">Chế độ chủ cửa hàng</span>
+                    <h2 class="font-serif text-2xl font-medium text-tea-ink">Quản Lý Trà Cụ</h2>
+                </div>
+                <button type="button" onclick="closeAdminDrawer()" aria-label="Đóng quản lý" class="p-2 text-tea-muted hover:text-tea-ink rounded-full hover:bg-tea-surface transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Tabs chuyển đổi: Thêm/Sửa Form vs Danh sách hiện tại vs Bảo mật -->
+            <div class="flex border-b border-tea-border px-6 bg-tea-bg overflow-x-auto no-scrollbar">
+                <button id="tab-form-btn" onclick="switchAdminTab('form')" class="whitespace-nowrap py-3 px-4 text-xs sm:text-sm font-medium border-b-2 border-tea-terracotta text-tea-terracotta transition">
+                    + Thêm / Sửa Trà Cụ
+                </button>
+                <button id="tab-list-btn" onclick="switchAdminTab('list')" class="whitespace-nowrap py-3 px-4 text-xs sm:text-sm font-normal border-b-2 border-transparent text-tea-muted hover:text-tea-ink transition">
+                    Danh sách hiện có (<span id="admin-total-count">0</span>)
+                </button>
+                <button id="tab-security-btn" onclick="switchAdminTab('security')" class="whitespace-nowrap py-3 px-4 text-xs sm:text-sm font-normal border-b-2 border-transparent text-tea-muted hover:text-tea-ink transition">
+                    Giao diện & Khóa
+                </button>
+            </div>
+
+            <!-- NỘI DUNG TAB 1: FORM THÊM / SỬA SẢN PHẨM -->
+            <div id="admin-tab-form" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <form id="product-admin-form" onsubmit="handleSaveProduct(event)" class="space-y-4">
+                    <input type="hidden" id="admin-prod-id" value="">
+
+                    <div class="flex items-center justify-between bg-tea-surface/80 px-3.5 py-2.5 rounded-lg border border-tea-border">
+                        <span id="admin-form-mode-label" class="text-xs font-medium text-tea-ink">Đang thêm sản phẩm mới</span>
+                        <button type="button" id="admin-cancel-edit-btn" onclick="resetAdminForm()" class="hidden text-xs text-tea-terracotta underline hover:text-tea-ink">
+                            Hủy sửa & tạo mới
+                        </button>
+                    </div>
+
+                    <!-- Tên sản phẩm -->
+                    <div>
+                        <label class="block text-xs font-medium text-tea-ink mb-1">Tên trà cụ *</label>
+                        <input type="text" id="admin-prod-name" required placeholder="VD: Ấm Tử Sa Tây Thi Nghi Hưng"
+                               class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                    </div>
+
+                    <!-- Danh mục & Chất liệu -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Danh mục *</label>
+                            <select id="admin-prod-category" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                                <option value="am-tu-sa">Ấm Tử Sa & Ấm Trà</option>
+                                <option value="chen-tong">Chén Khải & Chén Quân</option>
+                                <option value="khay-tra">Khay Trà Gỗ/Đá</option>
+                                <option value="dung-cu">Dụng Cụ Pha Trà</option>
+                                <option value="tra">Trà Tuyển Chọn</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Chất liệu / Dòng trà *</label>
+                            <select id="admin-prod-material" onchange="toggleMaterialNoteField()" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                                <optgroup label="Chất liệu trà cụ">
+                                    <option value="dat-tu-sa">Đất Tử Sa</option>
+                                    <option value="gom">Gốm</option>
+                                    <option value="thuy-tinh">Thủy Tinh Chịu Nhiệt</option>
+                                    <option value="go">Gỗ</option>
+                                </optgroup>
+                                <optgroup label="Phân loại Trà">
+                                    <option value="hong-tra">Hồng Trà</option>
+                                    <option value="bach-tra">Bạch Trà</option>
+                                    <option value="pho-nhi-song">Phổ Nhĩ Sống</option>
+                                    <option value="pho-nhi-chin">Phổ Nhĩ Chín</option>
+                                    <option value="nham-tra">Nham Trà</option>
+                                    <option value="luc-tra">Lục Trà</option>
+                                    <option value="o-long">Trà Ô Long</option>
+                                    <option value="long-tinh">Trà Long Tỉnh</option>
+                                </optgroup>
+                            </select>
+                            <div id="admin-material-note-wrapper" class="hidden mt-2">
+                                <input type="text" id="admin-prod-material-note" placeholder="Ghi rõ loại gốm / loại gỗ (VD: Gốm men tro, Gỗ óc chó...)"
+                                       class="w-full bg-tea-surface/60 border border-tea-border rounded-lg px-3 py-1.5 text-xs text-tea-ink focus:outline-none focus:border-tea-terracotta">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Giá bán & Dung tích / Kích thước -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Giá bán (VNĐ) *</label>
+                            <input type="number" id="admin-prod-price" required min="1000" step="1000" placeholder="VD: 1250000"
+                                   class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Dung tích / Kích thước *</label>
+                            <input type="text" id="admin-prod-spec" required placeholder="VD: Đất Đại Hồng Bào • 220ml"
+                                   class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                        </div>
+                    </div>
+
+                    <!-- Xuất xứ & Nhãn nổi bật & Trạng thái kho -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Xuất xứ chế tác</label>
+                            <input type="text" id="admin-prod-origin" placeholder="VD: Bát Tràng / Nghi Hưng"
+                                   class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Nhãn góc ảnh</label>
+                            <select id="admin-prod-badge" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                                <option value="">Không gắn nhãn</option>
+                                <option value="Thủ công">Thủ công</option>
+                                <option value="Mới">Mới</option>
+                                <option value="Bán chạy">Bán chạy</option>
+                                <option value="Độc bản">Độc bản</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-tea-ink mb-1">Tình trạng kho</label>
+                            <select id="admin-prod-stock" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                                <option value="true">Còn hàng</option>
+                                <option value="false">Hết hàng</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Hình ảnh sản phẩm (Tải từ máy HOẶC dán URL) -->
+                    <div class="bg-tea-surface/60 p-4 rounded-xl border border-tea-border space-y-3">
+                        <label class="block text-xs font-medium text-tea-ink">Hình ảnh sản phẩm (Chọn ảnh từ máy hoặc dán link ảnh) *</label>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+                            <!-- Khung xem trước ảnh -->
+                            <div class="w-20 h-24 rounded-lg bg-white border border-tea-border overflow-hidden shrink-0 flex items-center justify-center">
+                                <img id="admin-img-preview" src="https://placehold.co/300x375/F3EFEA/8C5A3C?text=Anh+SP" alt="Xem trước" class="w-full h-full object-cover">
+                            </div>
+
+                            <div class="flex-1 w-full space-y-2">
+                                <!-- Nút chọn file từ máy tính -->
+                                <label class="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-tea-surface border border-tea-border rounded-lg text-xs font-medium text-tea-ink cursor-pointer transition">
+                                    <svg class="w-4 h-4 text-tea-terracotta" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+                                    </svg>
+                                    <span>Tải ảnh từ máy tính / điện thoại</span>
+                                    <input type="file" id="admin-prod-file" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
+                                </label>
+
+                                <!-- Ô dán link ảnh URL -->
+                                <input type="text" id="admin-prod-image-url" oninput="handleImageUrlInput(this.value)" placeholder="Hoặc dán đường link ảnh (https://...)"
+                                       class="w-full bg-white border border-tea-border rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:border-tea-terracotta">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mô tả chi tiết -->
+                    <div>
+                        <label class="block text-xs font-medium text-tea-ink mb-1">Mô tả chi tiết trà cụ</label>
+                        <textarea id="admin-prod-desc" rows="3" placeholder="Mô tả chất đất, dáng ấm, công năng giữ nhiệt hoặc nét độc đáo của sản phẩm..."
+                                  class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-sm font-medium rounded-lg transition shadow-sm">
+                        Lưu sản phẩm lên cửa hàng
+                    </button>
+                </form>
+            </div>
+
+            <!-- NỘI DUNG TAB 2: DANH SÁCH SẢN PHẨM HIỆN CÓ -->
+            <div id="admin-tab-list" class="hidden flex-1 overflow-y-auto p-6 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 bg-tea-surface/70 p-3 rounded-xl border border-tea-border">
+                    <button type="button" onclick="exportProductsCode()" class="px-3 py-1.5 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-xs font-medium rounded-lg transition">
+                        Copy mã dữ liệu
+                    </button>
+                    <button type="button" onclick="resetDefaultProducts()" class="px-3 py-1.5 bg-white hover:bg-tea-surface text-tea-muted hover:text-tea-ink border border-tea-border text-xs rounded-lg transition">
+                        Khôi phục mặc định
+                    </button>
+                </div>
+
+                <div id="admin-product-list-container" class="divide-y divide-tea-border">
+                    <!-- Danh sách sản phẩm sẽ được render tự động tại đây -->
+                </div>
+            </div>
+
+            <!-- NỘI DUNG TAB 3: ĐỔI ẢNH CÂU CHUYỆN, MẬT KHẨU & KHÓA QUYỀN TRUY CẬP -->
+            <div id="admin-tab-security" class="hidden flex-1 overflow-y-auto p-6 space-y-5">
+                <!-- Cập nhật ảnh phần Câu chuyện nghệ nhân -->
+                <div class="bg-tea-surface/80 p-4 rounded-xl border border-tea-border space-y-3">
+                    <h3 class="font-serif text-lg font-medium text-tea-ink">Ảnh mục "Câu chuyện nghệ nhân"</h3>
+                    <p class="text-xs text-tea-muted leading-relaxed">
+                        Tải ảnh bộ ấm tử sa từ máy lên hoặc dán đường dẫn ảnh để thay đổi hình minh họa ở phần Triết lý chế tác.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <label class="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-tea-surface border border-tea-border rounded-lg text-xs font-medium text-tea-ink cursor-pointer transition">
+                            <svg class="w-4 h-4 text-tea-terracotta" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+                            </svg>
+                            <span>Chọn ảnh bộ ấm từ máy</span>
+                            <input type="file" accept="image/*" onchange="handleStoryImageUpload(event)" class="hidden">
+                        </label>
+                        <button type="button" onclick="resetStoryImage()" class="px-3 py-2 text-xs text-tea-muted hover:text-tea-ink underline">
+                            Khôi phục mặc định
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-tea-surface/80 p-4 rounded-xl border border-tea-border space-y-2">
+                    <h3 class="font-serif text-lg font-medium text-tea-ink">Bảo mật khu vực quản trị</h3>
+                    <p class="text-xs text-tea-muted leading-relaxed">
+                        Khách hàng truy cập website sẽ <strong>không</strong> nhìn thấy nút quản lý. Để mở lại bảng này sau khi đăng xuất, bạn chỉ cần <strong>nhấp đúp 2 lần vào logo HỮU HÀ TRÀ CỤ</strong> (hoặc nhấn phím <kbd class="px-1.5 py-0.5 bg-white border border-tea-border rounded text-[11px]">Alt + A</kbd>).
+                    </p>
+                </div>
+
+                <form onsubmit="handleChangeAdminPassword(event)" class="space-y-3.5">
+                    <div>
+                        <label class="block text-xs font-medium text-tea-ink mb-1">Mật khẩu hiện tại *</label>
+                        <input type="password" id="admin-old-pass" required placeholder="Nhập mật khẩu hiện tại..."
+                               class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-tea-ink mb-1">Mật khẩu mới *</label>
+                        <input type="password" id="admin-new-pass" required minlength="4" placeholder="Nhập mật khẩu mới (tối thiểu 4 ký tự)..."
+                               class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-sm font-medium rounded-lg transition">
+                        Cập nhật mật khẩu quản trị
+                    </button>
+                </form>
+
+                <div class="pt-4 border-t border-tea-border">
+                    <button type="button" onclick="logoutAdmin()" class="w-full py-2.5 bg-red-50 hover:bg-red-600 text-red-700 hover:text-white border border-red-200 text-xs font-medium rounded-lg transition">
+                        Đăng xuất & Ẩn thanh quản trị ngay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL XÁC THỰC CHỦ SHOP (Ẩn mặc định, mở khi nhấp đúp vào Logo)
+    ====================================================================== -->
+    <div id="admin-auth-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div onclick="closeAdminAuthModal()" class="fixed inset-0 bg-tea-ink/50 backdrop-blur-xs transition-opacity"></div>
+        <div class="relative bg-tea-bg rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-tea-border z-10 space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-tea-terracotta font-semibold">Xác thực quyền truy cập</span>
+                    <h3 class="font-serif text-2xl font-medium text-tea-ink">Đăng Nhập Chủ Shop</h3>
+                </div>
+                <button onclick="closeAdminAuthModal()" class="p-1.5 text-tea-muted hover:text-tea-ink rounded-full hover:bg-tea-surface">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <p class="text-xs text-tea-muted leading-relaxed">
+                Vui lòng nhập mật khẩu quản trị để mở khóa công cụ thêm, sửa và xóa trà cụ.
+            </p>
+            <form onsubmit="verifyAdminPassword(event)" class="space-y-3">
+                <input type="password" id="admin-login-password" required placeholder="Nhập mật khẩu quản trị..."
+                       class="w-full bg-white border border-tea-border rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:border-tea-terracotta">
+                <p id="admin-login-error" class="hidden text-xs text-red-600">Mật khẩu không chính xác. Vui lòng thử lại.</p>
+                <button type="submit" class="w-full py-2.5 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-sm font-medium rounded-lg transition">
+                    Mở khóa quản trị
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         3. COLLECTION HERO HEADER (Tiêu đề trang danh mục chuẩn Lemai)
+    ====================================================================== -->
+    <section id="collection" class="bg-tea-surface/70 border-b border-tea-border py-12 sm:py-16 lg:py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Breadcrumb nhỏ -->
+            <nav aria-label="Breadcrumb" class="flex justify-center items-center space-x-2 text-[11px] text-tea-muted tracking-[0.14em] uppercase mb-4 font-normal">
+                <a href="#" onclick="resetFilters()" class="hover:text-tea-terracotta transition">Trang chủ</a>
+                <span>/</span>
+                <a href="#collection" onclick="resetFilters()" class="hover:text-tea-terracotta transition">Bộ sưu tập</a>
+                <span>/</span>
+                <span class="text-tea-ink font-medium">Trà cụ thủ công</span>
+            </nav>
+
+            <!-- Tiêu đề lớn Serif -->
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-[50px] font-semibold tracking-[0.06em] uppercase text-tea-ink leading-tight">
+                Bộ Sưu Tập Trà Cụ
+            </h1>
+            
+            <!-- Đường gạch trang trí mảnh -->
+            <div class="w-12 h-[1px] bg-tea-terracotta mx-auto my-5"></div>
+
+            <!-- Đoạn mô tả truyền cảm hứng -->
+            <p class="text-[13px] sm:text-[15px] text-tea-muted font-light leading-[1.8] max-w-2xl mx-auto">
+                Mỗi trà cụ là một tác phẩm thủ công mang hơi thở của đất, lửa và đôi bàn tay nghệ nhân. 
+                Khám phá bộ sưu tập ấm tử sa nguyên khoáng, chén sứ men ngọc và khay trà mộc mạc, 
+                giúp trọn vẹn từng khoảnh khắc tĩnh tại bên chén trà thơm.
+            </p>
+
+            <!-- Dòng lưu ý Showroom Online tinh tế (không khung viền) -->
+            <p class="mt-5 text-xs sm:text-[13px] text-tea-ink max-w-2xl mx-auto leading-relaxed">
+                <span class="font-semibold text-tea-terracotta uppercase tracking-wider">Showroom Online:</span> 
+                Website chỉ trưng bày mẫu &amp; tham khảo, <strong>không nhận đặt đơn tự động</strong>. Quý khách đặt hàng vui lòng nhắn trực tiếp qua 
+                <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold text-[#0068FF] hover:underline">Zalo: 0369 875 491</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         4. MAIN CONTENT: FILTER BAR & PRODUCT GRID (Bố cục chuẩn Collection Lemai)
+    ====================================================================== -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        
+        <!-- THANH LỌC & SẮP XẾP (Filter & Sort Bar) -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-8 border-b border-tea-border">
+            
+            <!-- Bộ lọc Danh mục (Nút bấm dạng Pill thanh lịch) -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 lg:pb-0" id="category-filters">
+                <button data-category="all" class="category-btn active whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-medium bg-tea-ink text-tea-bg transition">
+                    Tất cả
+                </button>
+                <button data-category="tra" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Trà Tuyển Chọn
+                </button>
+                <button data-category="am-tu-sa" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Ấm Tử Sa
+                </button>
+                <button data-category="chen-tong" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Chén Khải & Chén Quân
+                </button>
+                <button data-category="khay-tra" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Khay Trà Gỗ/Đá
+                </button>
+                <button data-category="dung-cu" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Dụng Cụ Pha Trà
+                </button>
+            </div>
+
+            <!-- Bộ lọc Chất liệu / Dòng trà, Sắp xếp & Đếm số lượng -->
+            <div class="flex flex-wrap items-center justify-between lg:justify-end gap-3">
+                
+                <!-- Dropdown Lọc Chất Liệu & Dòng Trà -->
+                <div class="relative">
+                    <select id="material-filter" aria-label="Lọc theo chất liệu hoặc dòng trà"
+                            class="appearance-none bg-transparent border border-tea-border rounded-lg pl-3.5 pr-9 py-2 text-xs tracking-[0.03em] text-tea-ink focus:outline-none focus:border-tea-terracotta cursor-pointer">
+                        <option value="all">Phân loại: Tất cả</option>
+                        <optgroup label="— Các dòng Trà —">
+                            <option value="hong-tra">Hồng Trà</option>
+                            <option value="bach-tra">Bạch Trà</option>
+                            <option value="pho-nhi-song">Phổ Nhĩ Sống</option>
+                            <option value="pho-nhi-chin">Phổ Nhĩ Chín</option>
+                            <option value="nham-tra">Nham Trà</option>
+                            <option value="luc-tra">Lục Trà</option>
+                            <option value="o-long">Trà Ô Long</option>
+                            <option value="long-tinh">Trà Long Tỉnh</option>
+                        </optgroup>
+                        <optgroup label="— Chất liệu Trà cụ —">
+                            <option value="dat-tu-sa">Đất Tử Sa</option>
+                            <option value="gom">Gốm</option>
+                            <option value="thuy-tinh">Thủy Tinh Chịu Nhiệt</option>
+                            <option value="go">Gỗ</option>
+                        </optgroup>
+                    </select>
+                    <svg class="w-4 h-4 text-tea-muted pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                    </svg>
+                </div>
+
+                <!-- Dropdown Sắp Xếp -->
+                <div class="relative">
+                    <select id="sort-select" aria-label="Sắp xếp sản phẩm"
+                            class="appearance-none bg-transparent border border-tea-border rounded-lg pl-3.5 pr-9 py-2 text-xs tracking-[0.03em] text-tea-ink focus:outline-none focus:border-tea-terracotta cursor-pointer">
+                        <option value="featured">Sắp xếp: Nổi bật</option>
+                        <option value="price-asc">Giá: Thấp đến Cao</option>
+                        <option value="price-desc">Giá: Cao đến Thấp</option>
+                        <option value="newest">Mới nhất</option>
+                    </select>
+                    <svg class="w-4 h-4 text-tea-muted pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                    </svg>
+                </div>
+
+                <!-- Hiển thị tổng số sản phẩm -->
+                <span id="product-count" class="text-xs text-tea-muted pl-1">
+                    Hiển thị 14 sản phẩm
+                </span>
+            </div>
+        </div>
+
+        <!-- LƯỚI SẢN PHẨM (Product Grid: 2 cột mobile, 3 cột tablet, 4 cột desktop) -->
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-11">
+            <!-- Các thẻ sản phẩm sẽ được render tự động bằng JavaScript từ danh sách PRODUCTS -->
+        </div>
+
+        <!-- Trạng thái không tìm thấy sản phẩm -->
+        <div id="empty-state" class="hidden text-center py-16 px-4">
+            <p class="font-serif text-2xl text-tea-ink mb-2">Không tìm thấy trà cụ phù hợp</p>
+            <p class="text-sm text-tea-muted mb-6">Vui lòng thử thay đổi từ khóa tìm kiếm hoặc bộ lọc chất liệu, danh mục.</p>
+            <button onclick="resetFilters()" class="px-6 py-2.5 bg-tea-ink text-tea-bg text-sm rounded-full hover:bg-tea-terracotta transition">
+                Xem tất cả trà cụ
+            </button>
+        </div>
+
+    </main>
+
+    <!-- =====================================================================
+         5. SECTION CÂU CHUYỆN NGHỆ NHÂN (Tăng chiều sâu cảm xúc & niềm tin)
+    ====================================================================== -->
+    <section id="story-section" class="bg-tea-surface/60 border-t border-tea-border py-14 sm:py-20 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-6 overflow-hidden rounded-xl bg-tea-surface shadow-sm border border-tea-border/60">
+                <img id="story-section-img"
+                     src="./Gemini_Generated_Image_gc9gjvgc9gjvgc9g.png" 
+                     alt="Bộ ấm chén tử sa Nghi Hưng trên khay trà gỗ mộc mạc"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1000&q=85';"
+                     class="w-full h-72 sm:h-96 object-cover">
+            </div>
+            <div class="lg:col-span-6 space-y-4 sm:space-y-5">
+                <span class="text-xs uppercase tracking-[0.25em] text-tea-terracotta font-medium">Triết lý chế tác</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-tea-ink leading-snug">
+                    "Trà ngon cần nước suối nguồn,<br/>Ấm quý cần người tri kỷ."
+                </h2>
+                <p class="text-sm sm:text-base text-tea-muted font-light leading-relaxed">
+                    Tại <strong class="font-medium text-tea-ink">Hữu Hà Trà Cụ</strong>, chúng tôi tuyển chọn trực tiếp từng dáng ấm tử sa nguyên khoáng Nghi Hưng, từng chiếc chén men tro Bát Tràng và khay trà gỗ tự nhiên nguyên khối. 
+                </p>
+                <p class="text-sm sm:text-base text-tea-muted font-light leading-relaxed">
+                    Mỗi sản phẩm đều được kiểm tra độ khít nắp, dòng nước chảy mượt và đóng gói chống sốc 3 lớp an toàn tuyệt đối trước khi đến tay người yêu trà.
+                </p>
+                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-tea-border">
+                    <div>
+                        <p class="font-serif text-2xl font-semibold text-tea-terracotta">100%</p>
+                        <p class="text-xs text-tea-muted mt-0.5">Chế tác thủ công</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-semibold text-tea-terracotta">1 đổi 1</p>
+                        <p class="text-xs text-tea-muted mt-0.5">Bảo hành vỡ vận chuyển</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-2xl font-semibold text-tea-terracotta">Kiểm tra</p>
+                        <p class="text-xs text-tea-muted mt-0.5">Đồng kiểm khi nhận hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         6. FOOTER (Thông tin thương hiệu, chính sách)
+    ====================================================================== -->
+    <footer id="footer-contact" class="bg-tea-ink text-tea-bg/90 pt-14 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+            
+            <!-- Cột 1: Giới thiệu thương hiệu & Zalo -->
+            <div class="space-y-4">
+                <h3 class="font-serif text-2xl tracking-[0.18em] text-white">HỮU HÀ TRÀ CỤ</h3>
+                <p class="text-xs sm:text-sm text-tea-bg/70 font-light leading-relaxed">
+                    Không gian trà cụ thủ công & gốm sứ nghệ thuật. Gìn giữ nét đẹp tĩnh tại và tinh tế trong văn hóa thưởng trà Việt.
+                </p>
+                <div class="text-xs sm:text-sm text-tea-bg/80 pt-2">
+                    <p>
+                        <span class="text-white/95 font-medium">Zalo:</span> 
+                        <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="text-[#E5C9B3] hover:underline font-semibold tracking-wide">0369 875 491</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cột 2: Danh mục sản phẩm -->
+            <div>
+                <h4 class="text-xs uppercase tracking-[0.2em] text-white font-medium mb-4">Bộ Sưu Tập</h4>
+                <ul class="space-y-2.5 text-sm text-tea-bg/70 font-light">
+                    <li><button onclick="quickCategoryFilter('tra')" class="hover:text-white transition">Trà Tuyển Chọn (Hồng trà, Phổ nhĩ...)</button></li>
+                    <li><button onclick="quickCategoryFilter('am-tu-sa')" class="hover:text-white transition">Ấm Tử Sa Nghi Hưng</button></li>
+                    <li><button onclick="quickCategoryFilter('chen-tong')" class="hover:text-white transition">Chén Khải & Chén Quân</button></li>
+                    <li><button onclick="quickCategoryFilter('khay-tra')" class="hover:text-white transition">Khay Trà Gỗ Óc Chó / Đá</button></li>
+                    <li><button onclick="quickCategoryFilter('dung-cu')" class="hover:text-white transition">Bộ Lục Quân Tử & Phụ Kiện</button></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Chính sách khách hàng -->
+            <div>
+                <h4 class="text-xs uppercase tracking-[0.2em] text-white font-medium mb-4">Chính Sách & Hỗ Trợ</h4>
+                <ul class="space-y-2.5 text-sm text-tea-bg/70 font-light">
+                    <li><a href="javascript:void(0)" onclick="showToast('Cam kết 1 đổi 1 miễn phí nếu sản phẩm sứt mẻ trong quá trình vận chuyển.')" class="hover:text-white transition">Bảo hành vỡ/sứt mẻ vận chuyển</a></li>
+                    <li><a href="javascript:void(0)" onclick="showToast('Hướng dẫn khai ấm tử sa chi tiết được gửi kèm trong mỗi hộp sản phẩm.')" class="hover:text-white transition">Hướng dẫn khai ấm & dưỡng ấm</a></li>
+                    <li><a href="javascript:void(0)" onclick="showToast('Miễn phí giao hàng toàn quốc cho đơn từ 1.000.000đ.')" class="hover:text-white transition">Chính sách giao hàng & đồng kiểm</a></li>
+                    <li><a href="javascript:void(0)" onclick="showToast('Hỗ trợ đổi mẫu trong vòng 7 ngày nếu chưa qua sử dụng.')" class="hover:text-white transition">Chính sách đổi trả 7 ngày</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-tea-bg/50 gap-2">
+            <p>&copy; 2026 Hữu Hà Trà Cụ. Bản quyền được bảo lưu.</p>
+            <p>Thiết kế tối giản dành cho nghệ thuật thưởng trà.</p>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         7. MODAL XEM NHANH SẢN PHẨM (Quick View Modal)
+    ====================================================================== -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6">
+        <!-- Backdrop -->
+        <div id="qv-backdrop" class="fixed inset-0 bg-tea-ink/50 backdrop-blur-xs transition-opacity"></div>
+        
+        <!-- Nội dung Modal -->
+        <div class="relative bg-tea-bg rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-tea-border z-10 max-h-[90vh] flex flex-col md:flex-row">
+            <!-- Nút đóng -->
+            <button id="qv-close-btn" aria-label="Đóng xem nhanh" class="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-tea-bg/90 border border-tea-border flex items-center justify-center text-tea-ink hover:bg-tea-ink hover:text-white transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <!-- Cột Ảnh Sản Phẩm -->
+            <div class="md:w-1/2 bg-tea-surface relative">
+                <img id="qv-image" src="" alt="" class="w-full h-64 sm:h-80 md:h-full object-cover">
+                <span id="qv-badge" class="hidden absolute top-4 left-4 bg-tea-bg/95 text-tea-ink text-[11px] uppercase tracking-wider px-3 py-1 rounded-full font-medium shadow-xs"></span>
+            </div>
+
+            <!-- Cột Thông Tin Chi Tiết -->
+            <div class="md:w-1/2 p-6 sm:p-8 overflow-y-auto flex flex-col justify-between">
+                <div>
+                    <p id="qv-category-label" class="text-xs uppercase tracking-[0.2em] text-tea-terracotta mb-1.5"></p>
+                    <h2 id="qv-title" class="font-serif text-2xl sm:text-3xl font-medium text-tea-ink leading-snug"></h2>
+                    <p id="qv-price" class="text-lg sm:text-xl font-semibold text-tea-terracotta mt-2"></p>
+
+                    <div class="w-full h-[1px] bg-tea-border my-4"></div>
+
+                    <!-- Thông số kỹ thuật trà cụ -->
+                    <dl class="grid grid-cols-2 gap-y-2 text-xs sm:text-sm mb-4">
+                        <dt class="text-tea-muted">Chất liệu:</dt>
+                        <dd id="qv-material" class="font-medium text-tea-ink"></dd>
+                        
+                        <dt class="text-tea-muted">Dung tích / Kích thước:</dt>
+                        <dd id="qv-capacity" class="font-medium text-tea-ink"></dd>
+                        
+                        <dt class="text-tea-muted">Xuất xứ / Chế tác:</dt>
+                        <dd id="qv-origin" class="font-medium text-tea-ink"></dd>
+                    </dl>
+
+                    <!-- Mô tả nghệ thuật -->
+                    <p id="qv-description" class="text-xs sm:text-sm text-tea-muted font-light leading-relaxed"></p>
+
+                    <!-- Lưu ý Showroom Online trong Xem nhanh (chỉ chữ, không khung) -->
+                    <p class="mt-4 text-xs text-tea-ink leading-relaxed">
+                        <span class="font-semibold text-tea-terracotta">Showroom Online:</span> Trang web chỉ trưng bày mẫu, không phải nơi chốt đơn tự động. Vui lòng nhắn trực tiếp <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold text-[#0068FF] hover:underline">Zalo 0369 875 491</a> để đặt hàng.
+                    </p>
+                </div>
+
+                <!-- Chọn số lượng, Thêm vào giỏ & Đặt hàng qua Zalo -->
+                <div class="mt-5 pt-4 border-t border-tea-border">
+                    <div id="qv-action-area" class="space-y-2.5">
+                        <div class="flex items-center gap-3">
+                            <!-- Bộ chọn số lượng -->
+                            <div class="flex items-center border border-tea-border rounded-lg bg-white">
+                                <button type="button" onclick="updateQvQty(-1)" class="w-10 h-11 flex items-center justify-center text-tea-ink hover:bg-tea-surface rounded-l-lg transition">&minus;</button>
+                                <span id="qv-qty" class="w-10 text-center text-sm font-medium">1</span>
+                                <button type="button" onclick="updateQvQty(1)" class="w-10 h-11 flex items-center justify-center text-tea-ink hover:bg-tea-surface rounded-r-lg transition">&plus;</button>
+                            </div>
+
+                            <!-- Nút thêm vào giỏ -->
+                            <button id="qv-add-btn" class="flex-1 h-11 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-sm font-medium rounded-lg transition flex items-center justify-center gap-2">
+                                <span>Thêm vào giỏ hàng</span>
+                            </button>
+                        </div>
+
+                        <!-- Nút đặt hàng nhanh qua Zalo -->
+                        <button type="button" onclick="orderQuickViewViaZalo()" class="w-full h-11 bg-[#0068FF] hover:bg-[#0055D4] text-white text-sm font-medium rounded-lg transition flex items-center justify-center gap-2 shadow-xs">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.03 2 11c0 2.76 1.38 5.23 3.55 6.89-.15 1.31-.68 2.66-1.39 3.63-.21.29-.01.7.35.67 1.83-.14 3.79-.74 5.14-1.48.76.19 1.54.29 2.35.29 5.52 0 10-4.03 10-9s-4.48-9-10-9zm-4.2 11.4H5.3c-.28 0-.5-.22-.5-.5 0-.12.04-.23.12-.32l2.15-2.68H5.4c-.25 0-.45-.2-.45-.45s.2-.45.45-.45h2.4c.28 0 .5.22.5.5 0 .12-.04.23-.12.32l-2.15 2.68h1.77c.25 0 .45.2.45.45s-.2.45-.45.45zm3.75-.45c0 .25-.2.45-.45.45s-.45-.2-.45-.45v-.22c-.3.24-.68.38-1.1.38-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75c.42 0 .8.14 1.1.38v-.22c0-.25.2-.45.45-.45s.45.2.45.45v3.18zm1.55 0c0 .25-.2.45-.45.45s-.45-.2-.45-.45V8.6c0-.25.2-.45.45-.45s.45.2.45.45v4.35zm2.45.16c-.99 0-1.8-.81-1.8-1.8s.81-1.8 1.8-1.8 1.8.81 1.8 1.8-.81 1.8-1.8 1.8z"/>
+                            </svg>
+                            <span>Đặt hàng tại Zalo (0369 875 491)</span>
+                        </button>
+                    </div>
+                    <p id="qv-out-of-stock-msg" class="hidden text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg py-2.5 px-4 text-center">
+                        Sản phẩm độc bản này hiện đã hết hàng.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         8. NGĂN KÉO GIỎ HÀNG & ĐẶT HÀNG NHANH (Slide-over Cart Drawer)
+    ====================================================================== -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" class="fixed inset-0 bg-tea-ink/45 backdrop-blur-xs transition-opacity"></div>
+
+        <!-- Khung ngăn kéo trượt từ phải sang -->
+        <div class="fixed inset-y-0 right-0 max-w-md w-full bg-tea-bg shadow-2xl flex flex-col border-l border-tea-border z-10">
+            
+            <!-- Header Giỏ Hàng -->
+            <div class="px-6 py-5 border-b border-tea-border flex items-center justify-between">
+                <div>
+                    <h2 class="font-serif text-2xl font-medium text-tea-ink">Giỏ Trà Cụ</h2>
+                    <p id="cart-subtitle" class="text-xs text-tea-muted mt-0.5">0 sản phẩm đã chọn</p>
+                </div>
+                <button id="cart-close-btn" aria-label="Đóng giỏ hàng" class="p-2 text-tea-muted hover:text-tea-ink rounded-full hover:bg-tea-surface transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Dòng thông báo Showroom Online trong Giỏ hàng (chỉ chữ, không khung) -->
+            <p class="px-6 pt-3.5 text-xs text-tea-ink leading-relaxed">
+                <span class="font-semibold text-tea-terracotta">Showroom Online:</span> Đây là danh sách lưu tạm để tham khảo, không phải địa chỉ đặt hàng trực tiếp. Để đặt mua, quý khách vui lòng bấm nút gửi đơn qua Zalo <a href="https://zalo.me/0369875491" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-[#0068FF]">0369 875 491</a>.
+            </p>
+
+            <!-- Danh sách sản phẩm trong giỏ -->
+            <div id="cart-items-container" class="flex-1 overflow-y-auto px-6 py-4 divide-y divide-tea-border">
+                <!-- Render tự động bằng JS -->
+            </div>
+
+            <!-- Footer Giỏ Hàng: Tổng tiền & Đặt hàng qua Zalo -->
+            <div id="cart-footer" class="hidden border-t border-tea-border bg-tea-surface/50 px-6 py-5 space-y-4">
+                <div class="space-y-1.5 text-sm">
+                    <div class="flex justify-between text-tea-muted">
+                        <span>Tạm tính:</span>
+                        <span id="cart-subtotal">0đ</span>
+                    </div>
+                    <div class="flex justify-between text-base font-semibold text-tea-ink pt-2 border-t border-tea-border">
+                        <span>Tổng giá trị tham khảo:</span>
+                        <span id="cart-total" class="text-tea-terracotta">0đ</span>
+                    </div>
+                </div>
+
+                <!-- Nút Đặt hàng tại Zalo -->
+                <div id="cart-action-buttons" class="space-y-2.5">
+                    <button type="button" onclick="orderCartViaZalo()" class="w-full py-3 bg-[#0068FF] hover:bg-[#0055D4] text-white text-sm font-medium rounded-lg transition flex items-center justify-center gap-2 shadow-xs">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.03 2 11c0 2.76 1.38 5.23 3.55 6.89-.15 1.31-.68 2.66-1.39 3.63-.21.29-.01.7.35.67 1.83-.14 3.79-.74 5.14-1.48.76.19 1.54.29 2.35.29 5.52 0 10-4.03 10-9s-4.48-9-10-9zm-4.2 11.4H5.3c-.28 0-.5-.22-.5-.5 0-.12.04-.23.12-.32l2.15-2.68H5.4c-.25 0-.45-.2-.45-.45s.2-.45.45-.45h2.4c.28 0 .5.22.5.5 0 .12-.04.23-.12.32l-2.15 2.68h1.77c.25 0 .45.2.45.45s-.2.45-.45.45zm3.75-.45c0 .25-.2.45-.45.45s-.45-.2-.45-.45v-.22c-.3.24-.68.38-1.1.38-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75c.42 0 .8.14 1.1.38v-.22c0-.25.2-.45.45-.45s.45.2.45.45v3.18zm1.55 0c0 .25-.2.45-.45.45s-.45-.2-.45-.45V8.6c0-.25.2-.45.45-.45s.45.2.45.45v4.35zm2.45.16c-.99 0-1.8-.81-1.8-1.8s.81-1.8 1.8-1.8 1.8.81 1.8 1.8-.81 1.8-1.8 1.8z"/>
+                        </svg>
+                        <span>Chép danh sách & Nhắn Zalo đặt hàng</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         10. TOAST NOTIFICATION (Thông báo tinh tế thay thế alert)
+    ====================================================================== -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-tea-ink text-tea-bg px-5 py-3.5 rounded-xl shadow-xl border border-white/10 flex items-center gap-3 max-w-sm">
+            <span class="w-2 h-2 rounded-full bg-tea-moss shrink-0"></span>
+            <p id="toast-message" class="text-xs sm:text-sm font-light leading-snug"></p>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         11. JAVASCRIPT DỮ LIỆU SẢN PHẨM & TƯƠNG TÁC (Dễ dàng chỉnh sửa)
+    ====================================================================== -->
+    <script>
+        /**
+         * ===================================================================
+         * DỮ LIỆU MẶC ĐỊNH BAN ĐẦU (TỰ ĐỘNG LƯU VÀO LOCALSTORAGE KHI BẠN SỬA)
+         * ===================================================================
+         */
+        const DEFAULT_PRODUCTS = [
+            {
+                id: 'tc-01',
+                name: 'Ấm Tử Sa Tây Thi Nghi Hưng',
+                category: 'am-tu-sa',
+                categoryName: 'Ấm Tử Sa & Ấm Trà',
+                material: 'dat-tu-sa',
+                materialName: 'Đất Đại Hồng Bào',
+                spec: 'Đất Đại Hồng Bào • 220ml',
+                origin: 'Nghi Hưng, Giang Tô (Thủ công toàn chế)',
+                price: 1850000,
+                badge: 'Thủ công',
+                inStock: true,
+                featuredOrder: 1,
+                image: 'https://placehold.co/600x750/E8DDD1/4A3525?text=Am+Tu+Sa+Tay+Thi%0A220ml',
+                description: 'Dáng ấm Tây Thi tròn đầy, mềm mại với chất đất Đại Hồng Bào nguyên khoáng giữ nhiệt vượt trội. Vòi ấm ngắn cho dòng nước ngắt gọn, phù hợp pha Ô Long, Phổ Nhĩ và Hồng Trà.'
+            },
+            {
+                id: 'tc-02',
+                name: 'Chén Khải Sứ Trắng Liên Hoa',
+                category: 'chen-tong',
+                categoryName: 'Chén Khải & Chén Quân',
+                material: 'gom',
+                materialName: 'Gốm (Gốm Sứ Bát Tràng)',
+                spec: 'Sứ thấu quang • 160ml',
+                origin: 'Làng gốm Bát Tràng, Việt Nam',
+                price: 420000,
+                badge: 'Mới',
+                inStock: true,
+                featuredOrder: 2,
+                image: 'https://placehold.co/600x750/F3EFEA/5A6B5C?text=Chen+Khai+Su+Trang%0A160ml',
+                description: 'Chén khải (Tam Tài) cốt sứ mỏng nhẹ, vành chén loe vừa vặn giúp chống nóng tay khi rót trà. Họa tiết hoa sen vẽ tay thanh thoát, tôn trọn sắc nước trà xanh và trà trắng.'
+            },
+            {
+                id: 'tc-03',
+                name: 'Khay Trà Gỗ Óc Chó Nguyên Khối',
+                category: 'khay-tra',
+                categoryName: 'Khay Trà Gỗ/Đá',
+                material: 'go',
+                materialName: 'Gỗ (Gỗ Óc Chó Bắc Mỹ)',
+                spec: 'Gỗ nguyên khối • 45x22cm',
+                origin: 'Chế tác mộc thủ công Việt Nam',
+                price: 1350000,
+                badge: 'Thủ công',
+                inStock: true,
+                featuredOrder: 3,
+                image: 'https://placehold.co/600x750/DFD3C3/2C2420?text=Khay+Tra+Go+Oc+Cho%0A45x22cm',
+                description: 'Tiện từ gỗ óc chó tự nhiên nguyên tấm với đường vân trầm ấm sang trọng. Rãnh thoát nước ẩn tinh tế kèm khay hứng nước bên dưới, bề mặt phủ dầu thực vật an toàn.'
+            },
+            {
+                id: 'tc-04',
+                name: 'Bộ Lục Quân Tử Gỗ Mun Sừng',
+                category: 'dung-cu',
+                categoryName: 'Dụng Cụ Pha Trà',
+                material: 'go',
+                materialName: 'Gỗ (Gỗ Mun & Đồng Thau)',
+                spec: 'Gỗ Mun Sừng • Bộ 6 món',
+                origin: 'Thủ công mỹ nghệ',
+                price: 380000,
+                badge: '',
+                inStock: true,
+                featuredOrder: 4,
+                image: 'https://placehold.co/600x750/EAE3D9/6E4730?text=Bo+Luc+Quan+Tu%0A6+Mon',
+                description: 'Bộ 6 dụng cụ trà đạo thiết yếu gồm: gắp chén, xúc trà, thông vòi, thìa trà, que gạt và ống cắm gỗ mun. Giúp thao tác pha trà chuẩn mực, thanh lịch và vệ sinh.'
+            },
+            {
+                id: 'tc-05',
+                name: 'Ấm Thủy Tinh Chịu Nhiệt Tay Gỗ',
+                category: 'am-tu-sa',
+                categoryName: 'Ấm Tử Sa & Ấm Trà',
+                material: 'thuy-tinh',
+                materialName: 'Thủy Tinh Borosilicate',
+                spec: 'Thủy tinh & Gỗ trắc • 450ml',
+                origin: 'Thủ công thổi tay',
+                price: 540000,
+                badge: 'Mới',
+                inStock: true,
+                featuredOrder: 5,
+                image: 'https://placehold.co/600x750/EFECE6/4F5D52?text=Am+Thuy+Tinh%0A450ml',
+                description: 'Thân ấm thủy tinh trong suốt chịu nhiệt cao đến 150°C, cho phép ngắm trọn vẹn vũ điệu cánh trà nở trong nước. Tay cầm gỗ cách nhiệt chắc chắn kèm lõi lọc inox 304.'
+            },
+            {
+                id: 'tc-06',
+                name: 'Set 4 Chén Quân Men Tro Hỏa Biến',
+                category: 'chen-tong',
+                categoryName: 'Chén Khải & Chén Quân',
+                material: 'gom',
+                materialName: 'Gốm (Gốm Sứ Bát Tràng)',
+                spec: 'Men tro tự nhiên • 65ml/chén',
+                origin: 'Lò gốm thủ công Bát Tràng',
+                price: 490000,
+                badge: 'Thủ công',
+                inStock: true,
+                featuredOrder: 6,
+                image: 'https://placehold.co/600x750/E6DFD5/2C2420?text=Set+4+Chen+Quan%0AMen+Tro',
+                description: 'Mỗi chiếc chén sở hữu sắc men tro hỏa biến độc bản sau 12 giờ nung củi ở 1280°C. Lòng chén sáng nhẹ giúp tôn màu nước trà vàng óng như mật ong.'
+            },
+            {
+                id: 'tr-01',
+                name: 'Hồng Trà Kim Tuấn Mi Tuyển Chọn',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'hong-tra',
+                materialName: 'Hồng Trà',
+                spec: 'Hồng Trà • Hộp 100g',
+                origin: 'Đồng Mộc Quan, Vũ Di Sơn',
+                price: 480000,
+                badge: 'Bán chạy',
+                inStock: true,
+                featuredOrder: 7,
+                image: 'https://placehold.co/600x750/6E3B2B/FAF8F5?text=Hong+Tra%0AKim+Tuan+Mi',
+                description: 'Búp trà non hái sớm phủ lớp lông tơ vàng óng, hương mật hoa rừng quyện khoai lang nướng ngọt thanh. Nước trà đỏ hổ phách sóng sánh, hậu vị ngọt sâu lắng.'
+            },
+            {
+                id: 'tr-02',
+                name: 'Bạch Trà Mẫu Đơn Cổ Thụ',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'bach-tra',
+                materialName: 'Bạch Trà',
+                spec: 'Bạch Trà • Bánh 150g',
+                origin: 'Phúc Đỉnh, Phúc Kiến',
+                price: 550000,
+                badge: 'Thủ công',
+                inStock: true,
+                featuredOrder: 8,
+                image: 'https://placehold.co/600x750/EAE6DF/4F5D52?text=Bach+Tra%0AMau+Don',
+                description: 'Chế biến tối giản chỉ phơi nắng tự nhiên và sấy nhẹ để giữ trọn dược tính. Hương cỏ non thanh khiết, vị trà dịu ngọt như nước suối, càng lưu trữ lâu năm càng quý.'
+            },
+            {
+                id: 'tr-03',
+                name: 'Phổ Nhĩ Sống Băng Đảo Cổ Thụ',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'pho-nhi-song',
+                materialName: 'Phổ Nhĩ Sống',
+                spec: 'Phổ Nhĩ Sống • Bánh 357g',
+                origin: 'Lâm Thương, Vân Nam',
+                price: 920000,
+                badge: 'Độc bản',
+                inStock: true,
+                featuredOrder: 9,
+                image: 'https://placehold.co/600x750/D5DEC9/2C2420?text=Pho+Nhi+Song%0ABang+Dao',
+                description: 'Thu hái từ cây trà cổ thụ trên núi cao, sợi trà mập phủ tuyết trắng. Vị trà sinh tân mạnh mẽ, chuyển hóa nhanh từ chát thanh sang ngọt mát nơi cuống họng.'
+            },
+            {
+                id: 'tr-04',
+                name: 'Phổ Nhĩ Chín Cung Đình Lâu Năm',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'pho-nhi-chin',
+                materialName: 'Phổ Nhĩ Chín',
+                spec: 'Phổ Nhĩ Chín • Bánh 357g',
+                origin: 'Mãnh Hải, Tây Song Bản Nạp',
+                price: 680000,
+                badge: 'Bán chạy',
+                inStock: true,
+                featuredOrder: 10,
+                image: 'https://placehold.co/600x750/4A3226/FAF8F5?text=Pho+Nhi+Chin%0ACung+Dinh',
+                description: 'Lên men ủ đống chuẩn mực và lưu kho khô ráo nhiều năm. Nước trà nâu đỏ sánh mịn như rượu vang, hương trầm gỗ ấm áp, êm dịu cho dạ dày.'
+            },
+            {
+                id: 'tr-05',
+                name: 'Nham Trà Đại Hồng Bào Chính Nham',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'nham-tra',
+                materialName: 'Nham Trà',
+                spec: 'Nham Trà • Hộp 100g',
+                origin: 'Vũ Di Sơn, Phúc Kiến',
+                price: 750000,
+                badge: 'Thủ công',
+                inStock: true,
+                featuredOrder: 11,
+                image: 'https://placehold.co/600x750/59463B/FAF8F5?text=Nham+Tra%0ADai+Hong+Bao',
+                description: 'Mang đặc trưng "Nham vận hoa hương" danh tiếng của vùng núi đá Vũ Di. Trà sao lửa than truyền thống cho hương thơm trầm mặc, vị đậm đà bền nước qua 8–10 tuần trà.'
+            },
+            {
+                id: 'tr-06',
+                name: 'Lục Trà Shan Tuyết Suối Giàng',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'luc-tra',
+                materialName: 'Lục Trà',
+                spec: 'Lục Trà • Gói 100g',
+                origin: 'Suối Giàng, Yên Bái',
+                price: 320000,
+                badge: 'Mới',
+                inStock: true,
+                featuredOrder: 12,
+                image: 'https://placehold.co/600x750/DCE3D5/3B4A3E?text=Luc+Tra%0AShan+Tuyet',
+                description: 'Búp trà cổ thụ trên độ cao 1.400m quanh năm mây phủ. Nước trà xanh vàng trong vắt, hương cốm non dịu nhẹ, vị chát thanh mở đầu và hậu ngọt bền bỉ.'
+            },
+            {
+                id: 'tr-07',
+                name: 'Trà Ô Long Thiết Quan Âm Thanh Hương',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'o-long',
+                materialName: 'Trà Ô Long',
+                spec: 'Trà Ô Long • Hộp 150g',
+                origin: 'An Khê, Phúc Kiến',
+                price: 450000,
+                badge: '',
+                inStock: true,
+                featuredOrder: 13,
+                image: 'https://placehold.co/600x750/E4E6D9/3D4B3E?text=Tra+O+Long%0AThiet+Quan+Am',
+                description: 'Viên trà vo tròn chắc nặng, sắc xanh ngọc bích. Khi pha tỏa hương hoa lan tự nhiên thanh tao, nước trà vàng sáng, vị tươi mát sảng khoái.'
+            },
+            {
+                id: 'tr-08',
+                name: 'Trà Long Tỉnh Tây Hồ Minh Tiền',
+                category: 'tra',
+                categoryName: 'Trà Tuyển Chọn',
+                material: 'long-tinh',
+                materialName: 'Trà Long Tỉnh',
+                spec: 'Trà Long Tỉnh • Hộp 100g',
+                origin: 'Tây Hồ, Hàng Châu',
+                price: 690000,
+                badge: 'Mới',
+                inStock: true,
+                featuredOrder: 14,
+                image: 'https://placehold.co/600x750/E6E8DC/465442?text=Tra+Long+Tinh%0ATay+Ho',
+                description: 'Danh trà đứng đầu thập đại danh trà với cánh trà dẹt phẳng mượt mà, xanh ánh vàng. Sao chảo thủ công tạo hương hạt dẻ non đặc trưng, vị êm ngọt tinh tế.'
+            }
+        ];
+
+        // Khởi tạo danh sách PRODUCTS từ bộ nhớ trình duyệt (hoặc dùng mặc định) & đồng bộ mã chất liệu Gốm / Gỗ
+        let PRODUCTS = (JSON.parse(localStorage.getItem('tinh_tra_cu_products_v2')) || [...DEFAULT_PRODUCTS]).map(p => {
+            if (p.material === 'gom-su') {
+                return { ...p, material: 'gom', materialName: p.materialName || 'Gốm' };
+            }
+            if (p.material === 'go-tu-nhien') {
+                return { ...p, material: 'go', materialName: p.materialName || 'Gỗ' };
+            }
+            return p;
+        });
+
+        function persistProducts() {
+            try {
+                localStorage.setItem('tinh_tra_cu_products_v2', JSON.stringify(PRODUCTS));
+            } catch (e) {
+                showToast('Bộ nhớ trình duyệt đã đầy do ảnh quá lớn. Hãy dùng ảnh nhẹ hơn hoặc link ảnh.');
+            }
+        }
+
+        // ===================================================================
+        // TRẠNG THÁI ỨNG DỤNG & CÁC HÀM TIỆN ÍCH CỐT LÕI
+        // ===================================================================
+        const FREE_SHIP_THRESHOLD = 1000000;
+        const SHIPPING_FEE = 35000;
+
+        const state = {
+            category: 'all',
+            material: 'all',
+            sort: 'featured',
+            searchQuery: '',
+            cart: JSON.parse(localStorage.getItem('tinh_tra_cu_cart')) || [],
+            activeQuickViewProduct: null,
+            qvQuantity: 1
+        };
+
+        function formatVND(amount) {
+            return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
+        }
+
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            if (!toast || !msgEl) return;
+
+            msgEl.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3200);
+        }
+
+        // ===================================================================
+        // RENDER LƯỚI SẢN PHẨM & BỘ LỌC
+        // ===================================================================
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const emptyState = document.getElementById('empty-state');
+            const countEl = document.getElementById('product-count');
+
+            // 1. Lọc theo danh mục, chất liệu & từ khóa
+            let filtered = PRODUCTS.filter(p => {
+                const matchCategory = state.category === 'all' || p.category === state.category;
+                const matchMaterial = state.material === 'all' || p.material === state.material;
+                const q = state.searchQuery.trim().toLowerCase();
+                const matchSearch = !q ||
+                    p.name.toLowerCase().includes(q) ||
+                    p.spec.toLowerCase().includes(q) ||
+                    (p.materialName && p.materialName.toLowerCase().includes(q)) ||
+                    (p.description && p.description.toLowerCase().includes(q));
+                return matchCategory && matchMaterial && matchSearch;
+            });
+
+            // 2. Sắp xếp
+            if (state.sort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (state.sort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (state.sort === 'newest') {
+                filtered.sort((a, b) => String(b.id).localeCompare(String(a.id)));
+            } else {
+                filtered.sort((a, b) => (a.featuredOrder || 99) - (b.featuredOrder || 99));
+            }
+
+            // 3. Cập nhật đếm số lượng
+            countEl.textContent = `Hiển thị ${filtered.length} sản phẩm`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            // 4. Render thẻ sản phẩm chuẩn phong cách tối giản
+            grid.innerHTML = filtered.map(product => `
+                <article class="group flex flex-col">
+                    <!-- Khung ảnh tỉ lệ 4:5 -->
+                    <div class="relative aspect-[4/5] bg-tea-surface rounded-xl overflow-hidden border border-tea-border/60 mb-3.5">
+                        <img src="${product.image}"
+                             alt="${product.name}"
+                             onerror="this.src='https://placehold.co/600x750/F3EFEA/8C5A3C?text=Tra+Cu'"
+                             onclick="openQuickView('${product.id}')"
+                             class="w-full h-full object-cover cursor-pointer product-img-zoom ${!product.inStock ? 'opacity-60 grayscale-[30%]' : ''}">
+
+                        ${product.badge ? `
+                            <span class="absolute top-3 left-3 bg-tea-bg/95 backdrop-blur-xs text-tea-ink text-[10px] sm:text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full font-medium shadow-xs">
+                                ${product.badge}
+                            </span>
+                        ` : ''}
+
+                        <!-- Thanh thao tác nhanh khi hover (Desktop) & chạm (Mobile) -->
+                        <div class="absolute inset-x-3 bottom-3 flex items-center gap-2 opacity-100 sm:opacity-0 sm:translate-y-2 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-300">
+                            <button type="button" onclick="openQuickView('${product.id}')"
+                                    class="flex-1 py-2 px-3 bg-tea-bg/95 hover:bg-tea-ink text-tea-ink hover:text-tea-bg text-xs font-medium rounded-lg shadow-sm backdrop-blur-xs transition">
+                                Xem nhanh
+                            </button>
+                            ${product.inStock ? `
+                                <button type="button" onclick="addToCart('${product.id}', 1)" aria-label="Thêm vào giỏ"
+                                        class="p-2 bg-tea-terracotta hover:bg-tea-terracottaDark text-white rounded-lg shadow-sm transition">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                                    </svg>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Thông tin sản phẩm -->
+                    <div class="flex-1 flex flex-col justify-between space-y-1">
+                        <div>
+                            <p class="text-[11px] text-tea-muted tracking-[0.05em] uppercase">${product.spec}</p>
+                            <h3 onclick="openQuickView('${product.id}')"
+                                class="font-serif text-[19px] sm:text-[21px] font-semibold tracking-[0.01em] text-tea-ink group-hover:text-tea-terracotta transition cursor-pointer leading-snug mt-0.5 line-clamp-2">
+                                ${product.name}
+                            </h3>
+                        </div>
+                        <p class="text-[13px] sm:text-sm font-medium tracking-[0.03em] text-tea-terracotta pt-1">
+                            ${formatVND(product.price)}
+                        </p>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Sự kiện bấm nút lọc Danh mục (Pill buttons)
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-tea-ink', 'text-tea-bg', 'font-medium');
+                    b.classList.add('bg-transparent', 'text-tea-muted', 'border', 'border-tea-border', 'font-normal');
+                });
+                btn.classList.add('active', 'bg-tea-ink', 'text-tea-bg', 'font-medium');
+                btn.classList.remove('bg-transparent', 'text-tea-muted', 'border', 'border-tea-border', 'font-normal');
+
+                state.category = btn.getAttribute('data-category');
+                renderProducts();
+            });
+        });
+
+        function quickCategoryFilter(category) {
+            state.material = 'all';
+            const matSelect = document.getElementById('material-filter');
+            if (matSelect) matSelect.value = 'all';
+
+            const targetBtn = document.querySelector(`.category-btn[data-category="${category}"]`);
+            if (targetBtn) {
+                targetBtn.click();
+            } else {
+                state.category = category;
+                renderProducts();
+            }
+            const collectionEl = document.getElementById('collection');
+            if (collectionEl) {
+                collectionEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function quickTeaTypeFilter(teaType) {
+            // Kích hoạt tab Trà Tuyển Chọn
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.classList.remove('active', 'bg-tea-ink', 'text-tea-bg', 'font-medium');
+                b.classList.add('bg-transparent', 'text-tea-muted', 'border', 'border-tea-border', 'font-normal');
+            });
+            const teaBtn = document.querySelector('.category-btn[data-category="tra"]');
+            if (teaBtn) {
+                teaBtn.classList.add('active', 'bg-tea-ink', 'text-tea-bg', 'font-medium');
+                teaBtn.classList.remove('bg-transparent', 'text-tea-muted', 'border', 'border-tea-border', 'font-normal');
+            }
+
+            state.category = 'tra';
+            state.material = teaType;
+            const matSelect = document.getElementById('material-filter');
+            if (matSelect) matSelect.value = teaType;
+
+            renderProducts();
+            const collectionEl = document.getElementById('collection');
+            if (collectionEl) {
+                collectionEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        document.getElementById('material-filter').addEventListener('change', (e) => {
+            state.material = e.target.value;
+            renderProducts();
+        });
+
+        document.getElementById('sort-select').addEventListener('change', (e) => {
+            state.sort = e.target.value;
+            renderProducts();
+        });
+
+        // Tìm kiếm
+        const searchToggleBtn = document.getElementById('search-toggle-btn');
+        const searchBarContainer = document.getElementById('search-bar-container');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search-btn');
+
+        searchToggleBtn.addEventListener('click', () => {
+            searchBarContainer.classList.toggle('hidden');
+            if (!searchBarContainer.classList.contains('hidden')) {
+                searchInput.focus();
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            state.searchQuery = e.target.value;
+            clearSearchBtn.classList.toggle('hidden', !state.searchQuery);
+            renderProducts();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            state.searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderProducts();
+        });
+
+        function resetFilters() {
+            state.category = 'all';
+            state.material = 'all';
+            state.sort = 'featured';
+            state.searchQuery = '';
+            
+            document.getElementById('material-filter').value = 'all';
+            document.getElementById('sort-select').value = 'featured';
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            
+            const allBtn = document.querySelector('.category-btn[data-category="all"]');
+            if (allBtn) allBtn.click();
+        }
+
+        // ===================================================================
+        // MODAL XEM NHANH (QUICK VIEW)
+        // ===================================================================
+        const qvModal = document.getElementById('quick-view-modal');
+
+        function openQuickView(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            state.activeQuickViewProduct = product;
+            state.qvQuantity = 1;
+
+            document.getElementById('qv-image').src = product.image;
+            document.getElementById('qv-image').alt = product.name;
+            document.getElementById('qv-category-label').textContent = product.categoryName;
+            document.getElementById('qv-title').textContent = product.name;
+            document.getElementById('qv-price').textContent = formatVND(product.price);
+            document.getElementById('qv-material').textContent = product.materialName;
+            document.getElementById('qv-capacity').textContent = product.spec.split('•')[1]?.trim() || product.spec;
+            document.getElementById('qv-origin').textContent = product.origin;
+            document.getElementById('qv-description').textContent = product.description;
+            document.getElementById('qv-qty').textContent = '1';
+
+            const badgeEl = document.getElementById('qv-badge');
+            if (product.badge) {
+                badgeEl.textContent = product.badge;
+                badgeEl.classList.remove('hidden');
+            } else {
+                badgeEl.classList.add('hidden');
+            }
+
+            const actionArea = document.getElementById('qv-action-area');
+            const outMsg = document.getElementById('qv-out-of-stock-msg');
+            if (product.inStock) {
+                actionArea.classList.remove('hidden');
+                outMsg.classList.add('hidden');
+            } else {
+                actionArea.classList.add('hidden');
+                outMsg.classList.remove('hidden');
+            }
+
+            qvModal.classList.remove('hidden');
+            qvModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuickView() {
+            qvModal.classList.add('hidden');
+            qvModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function updateQvQty(delta) {
+            state.qvQuantity = Math.max(1, state.qvQuantity + delta);
+            document.getElementById('qv-qty').textContent = state.qvQuantity;
+        }
+
+        document.getElementById('qv-add-btn').addEventListener('click', () => {
+            if (state.activeQuickViewProduct && state.activeQuickViewProduct.inStock) {
+                addToCart(state.activeQuickViewProduct.id, state.qvQuantity);
+                closeQuickView();
+            }
+        });
+
+        document.getElementById('qv-close-btn').addEventListener('click', closeQuickView);
+        document.getElementById('qv-backdrop').addEventListener('click', closeQuickView);
+
+        // ===================================================================
+        // NGĂN KÉO GIỎ HÀNG (CART DRAWER LOGIC)
+        // ===================================================================
+        const cartDrawer = document.getElementById('cart-drawer');
+
+        function openCart() {
+            renderCart();
+            cartDrawer.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartDrawer.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('cart-open-btn').addEventListener('click', openCart);
+        document.getElementById('cart-close-btn').addEventListener('click', closeCart);
+        document.getElementById('cart-backdrop').addEventListener('click', closeCart);
+
+        function saveCart() {
+            localStorage.setItem('tinh_tra_cu_cart', JSON.stringify(state.cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const totalQty = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-badge').textContent = totalQty;
+        }
+
+        function addToCart(productId, qty = 1) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product || !product.inStock) return;
+
+            const existingItem = state.cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                state.cart.push({ id: productId, qty });
+            }
+
+            saveCart();
+            renderCart();
+            showToast(`Đã thêm "${product.name}" vào giỏ trà cụ.`);
+        }
+
+        function changeCartItemQty(productId, delta) {
+            const index = state.cart.findIndex(item => item.id === productId);
+            if (index === -1) return;
+
+            state.cart[index].qty += delta;
+            if (state.cart[index].qty <= 0) {
+                state.cart.splice(index, 1);
+            }
+
+            saveCart();
+            renderCart();
+        }
+
+        function removeCartItem(productId) {
+            state.cart = state.cart.filter(item => item.id !== productId);
+            saveCart();
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const footer = document.getElementById('cart-footer');
+            const subtitle = document.getElementById('cart-subtitle');
+
+            const totalQty = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            subtitle.textContent = `${totalQty} sản phẩm đã lưu tạm`;
+
+            if (state.cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-12">
+                        <svg class="w-12 h-12 text-tea-border mb-3" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/>
+                        </svg>
+                        <p class="font-serif text-xl text-tea-ink mb-1">Chưa có sản phẩm nào</p>
+                        <p class="text-xs text-tea-muted mb-5">Hãy chọn các mẫu trà cụ ưng ý để gửi qua Zalo đặt hàng.</p>
+                        <button onclick="closeCart()" class="px-5 py-2 border border-tea-ink text-tea-ink text-xs rounded-full hover:bg-tea-ink hover:text-tea-bg transition">
+                            Tiếp tục xem Showroom
+                        </button>
+                    </div>
+                `;
+                footer.classList.add('hidden');
+                return;
+            }
+
+            footer.classList.remove('hidden');
+            let subtotal = 0;
+
+            container.innerHTML = state.cart.map(cartItem => {
+                const product = PRODUCTS.find(p => p.id === cartItem.id);
+                if (!product) return '';
+                const itemTotal = product.price * cartItem.qty;
+                subtotal += itemTotal;
+
+                return `
+                    <div class="py-4 flex gap-3.5">
+                        <img src="${product.image}" alt="${product.name}" class="w-16 h-20 object-cover rounded-lg bg-tea-surface shrink-0">
+                        <div class="flex-1 min-w-0 flex flex-col justify-between">
+                            <div class="flex justify-between items-start gap-2">
+                                <h4 class="font-serif text-base font-medium text-tea-ink leading-snug line-clamp-2">${product.name}</h4>
+                                <button onclick="removeCartItem('${product.id}')" aria-label="Xóa sản phẩm" class="text-tea-muted hover:text-red-700 text-xs p-1">
+                                    &times;
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-tea-muted">${product.spec}</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class="flex items-center border border-tea-border rounded-md bg-white">
+                                    <button onclick="changeCartItemQty('${product.id}', -1)" class="w-7 h-7 text-xs hover:bg-tea-surface">&minus;</button>
+                                    <span class="w-7 text-center text-xs font-medium">${cartItem.qty}</span>
+                                    <button onclick="changeCartItemQty('${product.id}', 1)" class="w-7 h-7 text-xs hover:bg-tea-surface">&plus;</button>
+                                </div>
+                                <span class="text-sm font-medium text-tea-terracotta">${formatVND(itemTotal)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-subtotal').textContent = formatVND(subtotal);
+            document.getElementById('cart-total').textContent = formatVND(subtotal);
+        }
+
+        function orderQuickViewViaZalo() {
+            const p = state.activeQuickViewProduct;
+            if (!p) return;
+            const qty = state.qvQuantity || 1;
+            const total = p.price * qty;
+            const msg = `Chào Hữu Hà Trà Cụ, mình muốn đặt sản phẩm:\n- ${p.name} (${p.spec})\n- Số lượng: ${qty}\n- Tạm tính: ${formatVND(total)}`;
+            copyTextAndOpenZalo(msg);
+        }
+
+        function orderCartViaZalo() {
+            if (!state.cart || state.cart.length === 0) return;
+            let subtotal = 0;
+            const itemLines = state.cart.map((item, idx) => {
+                const p = PRODUCTS.find(prod => prod.id === item.id);
+                if (!p) return '';
+                const lineTotal = p.price * item.qty;
+                subtotal += lineTotal;
+                return `${idx + 1}. ${p.name} x${item.qty} - ${formatVND(lineTotal)}`;
+            }).filter(Boolean);
+
+            const msg = `Chào Hữu Hà Trà Cụ, mình muốn đặt các mẫu đã chọn trên Showroom Online:\n${itemLines.join('\n')}\n- Tổng giá trị tham khảo: ${formatVND(subtotal)}`;
+            copyTextAndOpenZalo(msg);
+        }
+
+        function orderCartViaZalo() {
+            if (!state.cart || state.cart.length === 0) return;
+            let subtotal = 0;
+            const itemLines = state.cart.map((item, idx) => {
+                const p = PRODUCTS.find(prod => prod.id === item.id);
+                if (!p) return '';
+                const lineTotal = p.price * item.qty;
+                subtotal += lineTotal;
+                return `${idx + 1}. ${p.name} x${item.qty} - ${formatVND(lineTotal)}`;
+            }).filter(Boolean);
+
+            const shipping = subtotal >= FREE_SHIP_THRESHOLD ? 0 : SHIPPING_FEE;
+            const total = subtotal + shipping;
+            const msg = `Chào Hữu Hà Trà Cụ, mình muốn đặt đơn hàng:\n${itemLines.join('\n')}\n- Phí vận chuyển: ${shipping === 0 ? 'Miễn phí' : formatVND(shipping)}\n- Tổng cộng: ${formatVND(total)}`;
+            copyTextAndOpenZalo(msg);
+        }
+
+        function copyTextAndOpenZalo(message) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(message).catch(() => {});
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = message;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            }
+            showToast('Đã sao chép thông tin đơn hàng & đang mở Zalo (0369 875 491)...');
+            window.open('https://zalo.me/0369875491', '_blank', 'noopener,noreferrer');
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            
+            // Xóa giỏ hàng sau khi đặt thành công
+            state.cart = [];
+            saveCart();
+            renderCart();
+            
+            // Reset form
+            document.getElementById('quick-checkout-form').reset();
+            document.getElementById('quick-checkout-form').classList.add('hidden');
+            document.getElementById('cart-action-buttons').classList.remove('hidden');
+            
+            closeCart();
+            showToast(`Cảm ơn ${name}! Đơn trà cụ đã được ghi nhận, chúng tôi sẽ gọi xác nhận qua số ${phone}.`);
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            event.target.reset();
+            showToast('Đăng ký bản tin trà đạo thành công! Cảm ơn bạn đã đồng hành.');
+        }
+
+        // ===================================================================
+        // MENU MOBILE
+        // ===================================================================
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        function openMobileMenu() {
+            mobileMenuDrawer.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            mobileMenuDrawer.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', openMobileMenu);
+        document.getElementById('close-mobile-menu').addEventListener('click', closeMobileMenu);
+        document.getElementById('mobile-menu-backdrop').addEventListener('click', closeMobileMenu);
+
+        // ===================================================================
+        // QUẢN LÝ SẢN PHẨM THỦ CÔNG TRỰC TIẾP TRÊN TRÌNH DUYỆT (ADMIN DRAWER)
+        // ===================================================================
+        const CATEGORY_LABELS = {
+            'tra': 'Trà Tuyển Chọn',
+            'am-tu-sa': 'Ấm Tử Sa & Ấm Trà',
+            'chen-tong': 'Chén Khải & Chén Quân',
+            'khay-tra': 'Khay Trà Gỗ/Đá',
+            'dung-cu': 'Dụng Cụ Pha Trà'
+        };
+
+        const MATERIAL_LABELS = {
+            'dat-tu-sa': 'Đất Tử Sa',
+            'gom': 'Gốm',
+            'thuy-tinh': 'Thủy Tinh Chịu Nhiệt',
+            'go': 'Gỗ',
+            'hong-tra': 'Hồng Trà',
+            'bach-tra': 'Bạch Trà',
+            'pho-nhi-song': 'Phổ Nhĩ Sống',
+            'pho-nhi-chin': 'Phổ Nhĩ Chín',
+            'nham-tra': 'Nham Trà',
+            'luc-tra': 'Lục Trà',
+            'o-long': 'Trà Ô Long',
+            'long-tinh': 'Trà Long Tỉnh'
+        };
+
+        function toggleMaterialNoteField() {
+            const mat = document.getElementById('admin-prod-material').value;
+            const wrapper = document.getElementById('admin-material-note-wrapper');
+            const input = document.getElementById('admin-prod-material-note');
+            if (mat === 'gom' || mat === 'go') {
+                wrapper.classList.remove('hidden');
+                input.placeholder = mat === 'gom'
+                    ? 'Ghi chú loại gốm (VD: Gốm Bát Tràng, Gốm men tro, Gốm Chu Đậu...)'
+                    : 'Ghi chú loại gỗ (VD: Gỗ óc chó, Gỗ mun sừng, Gỗ trắc, Tre tự nhiên...)';
+            } else {
+                wrapper.classList.add('hidden');
+                input.value = '';
+            }
+        }
+
+        let uploadedBase64Image = '';
+
+        function openAdminDrawer() {
+            renderAdminProductList();
+            document.getElementById('admin-drawer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdminDrawer() {
+            document.getElementById('admin-drawer').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function switchAdminTab(tab) {
+            const formTab = document.getElementById('admin-tab-form');
+            const listTab = document.getElementById('admin-tab-list');
+            const securityTab = document.getElementById('admin-tab-security');
+            const formBtn = document.getElementById('tab-form-btn');
+            const listBtn = document.getElementById('tab-list-btn');
+            const securityBtn = document.getElementById('tab-security-btn');
+
+            [formTab, listTab, securityTab].forEach(el => el.classList.add('hidden'));
+            [formBtn, listBtn, securityBtn].forEach(btn => {
+                btn.classList.remove('border-tea-terracotta', 'text-tea-terracotta', 'font-medium');
+                btn.classList.add('border-transparent', 'text-tea-muted');
+            });
+
+            if (tab === 'form') {
+                formTab.classList.remove('hidden');
+                formBtn.classList.add('border-tea-terracotta', 'text-tea-terracotta', 'font-medium');
+                formBtn.classList.remove('border-transparent', 'text-tea-muted');
+            } else if (tab === 'list') {
+                renderAdminProductList();
+                listTab.classList.remove('hidden');
+                listBtn.classList.add('border-tea-terracotta', 'text-tea-terracotta', 'font-medium');
+                listBtn.classList.remove('border-transparent', 'text-tea-muted');
+            } else if (tab === 'security') {
+                securityTab.classList.remove('hidden');
+                securityBtn.classList.add('border-tea-terracotta', 'text-tea-terracotta', 'font-medium');
+                securityBtn.classList.remove('border-transparent', 'text-tea-muted');
+            }
+        }
+
+        // Tự động nén ảnh khi người dùng tải ảnh từ máy tính để tiết kiệm dung lượng
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 700;
+                    const scale = Math.min(1, MAX_WIDTH / img.width);
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    uploadedBase64Image = canvas.toDataURL('image/jpeg', 0.82);
+                    document.getElementById('admin-img-preview').src = uploadedBase64Image;
+                    document.getElementById('admin-prod-image-url').value = '';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleImageUrlInput(url) {
+            if (url.trim()) {
+                uploadedBase64Image = '';
+                document.getElementById('admin-img-preview').src = url.trim();
+            }
+        }
+
+        function handleSaveProduct(event) {
+            event.preventDefault();
+            const editId = document.getElementById('admin-prod-id').value;
+            const name = document.getElementById('admin-prod-name').value.trim();
+            const category = document.getElementById('admin-prod-category').value;
+            const material = document.getElementById('admin-prod-material').value;
+            const materialNote = document.getElementById('admin-prod-material-note').value.trim();
+            const baseMaterialName = MATERIAL_LABELS[material] || material;
+            const formattedMaterialName = ((material === 'gom' || material === 'go') && materialNote)
+                ? `${baseMaterialName} (${materialNote})`
+                : baseMaterialName;
+            const price = parseInt(document.getElementById('admin-prod-price').value, 10) || 0;
+            const spec = document.getElementById('admin-prod-spec').value.trim();
+            const origin = document.getElementById('admin-prod-origin').value.trim() || 'Chế tác thủ công';
+            const badge = document.getElementById('admin-prod-badge').value;
+            const inStock = document.getElementById('admin-prod-stock').value === 'true';
+            const description = document.getElementById('admin-prod-desc').value.trim() || 'Trà cụ thủ công tinh xảo, phù hợp cho không gian thưởng trà thanh tịnh.';
+            
+            const urlInput = document.getElementById('admin-prod-image-url').value.trim();
+            const finalImage = uploadedBase64Image || urlInput || `https://placehold.co/600x750/EFECE6/4A3525?text=${encodeURIComponent(name)}`;
+
+            if (editId) {
+                // Cập nhật sản phẩm đang sửa
+                const idx = PRODUCTS.findIndex(p => p.id === editId);
+                if (idx !== -1) {
+                    PRODUCTS[idx] = {
+                        ...PRODUCTS[idx],
+                        name,
+                        category,
+                        categoryName: CATEGORY_LABELS[category],
+                        material,
+                        materialName: formattedMaterialName,
+                        materialNote: (material === 'gom' || material === 'go') ? materialNote : '',
+                        spec,
+                        origin,
+                        price,
+                        badge: inStock ? badge : 'Hết hàng',
+                        inStock,
+                        image: finalImage,
+                        description
+                    };
+                    showToast(`Đã cập nhật "${name}" thành công!`);
+                }
+            } else {
+                // Thêm sản phẩm mới lên đầu danh sách
+                const newProduct = {
+                    id: 'tc-' + Date.now(),
+                    name,
+                    category,
+                    categoryName: CATEGORY_LABELS[category],
+                    material,
+                    materialName: formattedMaterialName,
+                    materialNote: (material === 'gom' || material === 'go') ? materialNote : '',
+                    spec,
+                    origin,
+                    price,
+                    badge: inStock ? badge : 'Hết hàng',
+                    inStock,
+                    featuredOrder: 0,
+                    image: finalImage,
+                    description
+                };
+                PRODUCTS.unshift(newProduct);
+                showToast(`Đã thêm "${name}" lên cửa hàng!`);
+            }
+
+            persistProducts();
+            renderProducts();
+            renderAdminProductList();
+            resetAdminForm();
+            switchAdminTab('list');
+        }
+
+        function editProductInAdmin(id) {
+            const p = PRODUCTS.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('admin-prod-id').value = p.id;
+            document.getElementById('admin-prod-name').value = p.name;
+            document.getElementById('admin-prod-category').value = p.category;
+            document.getElementById('admin-prod-material').value = p.material;
+            toggleMaterialNoteField();
+            if (p.material === 'gom' || p.material === 'go') {
+                let extractedNote = p.materialNote || '';
+                if (!extractedNote && p.materialName) {
+                    const match = p.materialName.match(/^[^(]+\((.+)\)$/);
+                    if (match) extractedNote = match[1].trim();
+                }
+                document.getElementById('admin-prod-material-note').value = extractedNote;
+            }
+            document.getElementById('admin-prod-price').value = p.price;
+            document.getElementById('admin-prod-spec').value = p.spec;
+            document.getElementById('admin-prod-origin').value = p.origin;
+            document.getElementById('admin-prod-badge').value = p.badge === 'Hết hàng' ? '' : p.badge;
+            document.getElementById('admin-prod-stock').value = p.inStock ? 'true' : 'false';
+            document.getElementById('admin-prod-desc').value = p.description;
+            document.getElementById('admin-img-preview').src = p.image;
+
+            if (p.image.startsWith('data:image')) {
+                uploadedBase64Image = p.image;
+                document.getElementById('admin-prod-image-url').value = '';
+            } else {
+                uploadedBase64Image = '';
+                document.getElementById('admin-prod-image-url').value = p.image;
+            }
+
+            document.getElementById('admin-form-mode-label').textContent = `Đang sửa: ${p.name}`;
+            document.getElementById('admin-cancel-edit-btn').classList.remove('hidden');
+            switchAdminTab('form');
+        }
+
+        function deleteProductInAdmin(id) {
+            const target = PRODUCTS.find(p => p.id === id);
+            if (!target) return;
+            PRODUCTS = PRODUCTS.filter(p => p.id !== id);
+            persistProducts();
+            renderProducts();
+            renderAdminProductList();
+            showToast(`Đã xóa "${target.name}" khỏi cửa hàng.`);
+        }
+
+        function resetAdminForm() {
+            document.getElementById('product-admin-form').reset();
+            document.getElementById('admin-prod-id').value = '';
+            toggleMaterialNoteField();
+            uploadedBase64Image = '';
+            document.getElementById('admin-img-preview').src = 'https://placehold.co/300x375/F3EFEA/8C5A3C?text=Anh+SP';
+            document.getElementById('admin-form-mode-label').textContent = 'Đang thêm sản phẩm mới';
+            document.getElementById('admin-cancel-edit-btn').classList.add('hidden');
+        }
+
+        function renderAdminProductList() {
+            const container = document.getElementById('admin-product-list-container');
+            document.getElementById('admin-total-count').textContent = PRODUCTS.length;
+
+            if (PRODUCTS.length === 0) {
+                container.innerHTML = `<p class="text-sm text-tea-muted text-center py-8">Chưa có sản phẩm nào. Hãy chuyển sang tab "+ Thêm / Sửa Trà Cụ" để tạo mới.</p>`;
+                return;
+            }
+
+            container.innerHTML = PRODUCTS.map(p => `
+                <div class="py-3 flex items-center gap-3">
+                    <img src="${p.image}" alt="${p.name}" class="w-12 h-14 object-cover rounded-md bg-tea-surface border border-tea-border shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-serif text-base font-medium text-tea-ink truncate">${p.name}</h4>
+                        <p class="text-xs text-tea-muted truncate">${p.spec} &bull; <span class="text-tea-terracotta font-medium">${formatVND(p.price)}</span></p>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button type="button" onclick="editProductInAdmin('${p.id}')" class="px-2.5 py-1.5 bg-tea-surface hover:bg-tea-ink hover:text-white text-tea-ink text-xs rounded-md transition">
+                            Sửa
+                        </button>
+                        <button type="button" onclick="deleteProductInAdmin('${p.id}')" class="px-2.5 py-1.5 bg-red-50 hover:bg-red-600 hover:text-white text-red-700 text-xs rounded-md transition">
+                            Xóa
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetDefaultProducts() {
+            PRODUCTS = [...DEFAULT_PRODUCTS];
+            persistProducts();
+            renderProducts();
+            renderAdminProductList();
+            showToast('Đã khôi phục danh sách trà cụ mặc định ban đầu.');
+        }
+
+        function exportProductsCode() {
+            const codeText = `const DEFAULT_PRODUCTS = ${JSON.stringify(PRODUCTS, null, 4)};`;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = codeText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('Đã copy toàn bộ dữ liệu sản phẩm vào bộ nhớ tạm!');
+        }
+
+        // ===================================================================
+        // PHÂN QUYỀN TRUY CẬP QUẢN TRỊ (ADMIN ACCESS CONTROL)
+        // ===================================================================
+        const ADMIN_PASS_KEY = 'tinh_tra_cu_admin_pass';
+        const ADMIN_SESSION_KEY = 'tinh_tra_cu_admin_unlocked';
+
+        function getAdminPassword() {
+            return localStorage.getItem(ADMIN_PASS_KEY) || 'admin123';
+        }
+
+        function isAdminUnlocked() {
+            return sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+        }
+
+        function syncAdminUI() {
+            const toolbar = document.getElementById('admin-toolbar-group');
+            if (!toolbar) return;
+            if (isAdminUnlocked()) {
+                toolbar.classList.remove('hidden');
+                toolbar.classList.add('flex');
+            } else {
+                toolbar.classList.add('hidden');
+                toolbar.classList.remove('flex');
+            }
+        }
+
+        function triggerAdminAccess() {
+            if (isAdminUnlocked()) {
+                openAdminDrawer();
+                return;
+            }
+            const modal = document.getElementById('admin-auth-modal');
+            const input = document.getElementById('admin-login-password');
+            const err = document.getElementById('admin-login-error');
+            err.classList.add('hidden');
+            input.value = '';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closeAdminAuthModal() {
+            const modal = document.getElementById('admin-auth-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function verifyAdminPassword(event) {
+            event.preventDefault();
+            const input = document.getElementById('admin-login-password').value;
+            const err = document.getElementById('admin-login-error');
+
+            if (input === getAdminPassword()) {
+                sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+                closeAdminAuthModal();
+                syncAdminUI();
+                openAdminDrawer();
+                showToast('Đã mở khóa chế độ quản trị sản phẩm.');
+            } else {
+                err.classList.remove('hidden');
+            }
+        }
+
+        function handleChangeAdminPassword(event) {
+            event.preventDefault();
+            const oldPass = document.getElementById('admin-old-pass').value;
+            const newPass = document.getElementById('admin-new-pass').value.trim();
+
+            if (oldPass !== getAdminPassword()) {
+                showToast('Mật khẩu hiện tại không đúng!');
+                return;
+            }
+            localStorage.setItem(ADMIN_PASS_KEY, newPass);
+            event.target.reset();
+            showToast('Đã cập nhật mật khẩu quản trị mới thành công!');
+        }
+
+        function logoutAdmin() {
+            sessionStorage.removeItem(ADMIN_SESSION_KEY);
+            closeAdminDrawer();
+            syncAdminUI();
+            showToast('Đã khóa và ẩn thanh công cụ quản trị.');
+        }
+
+        // Phím tắt Alt + A để mở cổng đăng nhập nhanh trên máy tính
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && (e.key === 'a' || e.key === 'A')) {
+                e.preventDefault();
+                triggerAdminAccess();
+            }
+        });
+
+        // Quản lý ảnh phần Câu chuyện nghệ nhân
+        const STORY_IMG_KEY = 'tinh_tra_cu_story_img';
+        const DEFAULT_STORY_IMG = './Gemini_Generated_Image_gc9gjvgc9gjvgc9g.png';
+
+        function applySavedStoryImage() {
+            const savedImg = localStorage.getItem(STORY_IMG_KEY);
+            const imgEl = document.getElementById('story-section-img');
+            if (savedImg && imgEl) {
+                imgEl.src = savedImg;
+            }
+        }
+
+        function handleStoryImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 1100;
+                    const scale = Math.min(1, MAX_WIDTH / img.width);
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const compressed = canvas.toDataURL('image/jpeg', 0.85);
+                    localStorage.setItem(STORY_IMG_KEY, compressed);
+                    document.getElementById('story-section-img').src = compressed;
+                    showToast('Đã cập nhật ảnh phần Câu chuyện nghệ nhân!');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetStoryImage() {
+            localStorage.removeItem(STORY_IMG_KEY);
+            document.getElementById('story-section-img').src = DEFAULT_STORY_IMG;
+            showToast('Đã khôi phục ảnh mặc định.');
+        }
+
+        // Khởi chạy ứng dụng khi tải trang
+        window.addEventListener('DOMContentLoaded', () => {
+            syncAdminUI();
+            applySavedStoryImage();
+            renderProducts();
+            updateCartBadge();
+            document.getElementById('admin-total-count').textContent = PRODUCTS.length;
+        });
+    </script>
+</body>
+</html>
