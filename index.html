@@ -896,21 +896,7 @@
                         </svg>
                         <span>Đặt hàng tại Zalo</span>
                     </button>
-                    <button id="toggle-checkout-btn" onclick="toggleCheckoutForm()" class="w-full py-2.5 bg-tea-ink hover:bg-tea-terracotta text-tea-bg text-xs sm:text-sm font-medium rounded-lg transition">
-                        Hoặc điền thông tin đặt hàng (COD)
-                    </button>
                 </div>
-
-                <!-- Form Đặt Hàng Nhanh (Ẩn mặc định, mở khi bấm nút trên) -->
-                <form id="quick-checkout-form" onsubmit="submitOrder(event)" class="hidden space-y-2.5 pt-2 border-t border-tea-border">
-                    <p class="text-xs font-medium text-tea-ink">Thông tin nhận trà cụ (Kiểm tra hàng trước khi thanh toán):</p>
-                    <input type="text" id="cust-name" required placeholder="Họ và tên người nhận *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
-                    <input type="tel" id="cust-phone" required placeholder="Số điện thoại liên hệ *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
-                    <input type="text" id="cust-address" required placeholder="Địa chỉ giao hàng chi tiết *" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-tea-terracotta">
-                    <button type="submit" class="w-full py-3 bg-tea-terracotta hover:bg-tea-terracottaDark text-white text-sm font-medium rounded-lg transition">
-                        Xác nhận đặt hàng (COD)
-                    </button>
-                </form>
             </div>
         </div>
     </div>
