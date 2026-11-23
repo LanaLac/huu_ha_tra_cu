@@ -231,7 +231,7 @@
                     <div class="space-y-1.5 pt-2 border-t border-tea-border/60">
                         <p class="text-xs uppercase tracking-widest text-tea-muted">Danh mục trà cụ</p>
                         <button onclick="closeMobileMenu(); quickCategoryFilter('all');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Tất cả sản phẩm</button>
-                        <button onclick="closeMobileMenu(); quickCategoryFilter('am-tu-sa');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Ấm Tử Sa & Ấm Gốm</button>
+                        <button onclick="closeMobileMenu(); quickCategoryFilter('am');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Ấm Gốm</button>
                         <button onclick="closeMobileMenu(); quickCategoryFilter('chen-tong');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Chén Khải & Chén Quân</button>
                         <button onclick="closeMobileMenu(); quickCategoryFilter('khay-tra');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Khay Trà Gỗ & Đá</button>
                         <button onclick="closeMobileMenu(); quickCategoryFilter('dung-cu');" class="block text-left py-1 text-tea-ink hover:text-tea-terracotta">Dụng Cụ Pha Trà</button>
@@ -317,7 +317,7 @@
                         <div>
                             <label class="block text-xs font-medium text-tea-ink mb-1">Danh mục *</label>
                             <select id="admin-prod-category" class="w-full bg-white border border-tea-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-tea-terracotta">
-                                <option value="am-tu-sa">Ấm Tử Sa & Ấm Trà</option>
+                                <option value="am">Ấm Trà</option>
                                 <option value="chen-tong">Chén Khải & Chén Quân</option>
                                 <option value="khay-tra">Khay Trà Gỗ/Đá</option>
                                 <option value="dung-cu">Dụng Cụ Pha Trà</option>
@@ -584,8 +584,8 @@
                 <button data-category="tra" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
                     Trà Tuyển Chọn
                 </button>
-                <button data-category="am-tu-sa" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
-                    Ấm Tử Sa
+                <button data-category="am" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
+                    Ấm Trà
                 </button>
                 <button data-category="chen-tong" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs tracking-[0.04em] font-normal bg-transparent text-tea-muted border border-tea-border hover:border-tea-ink hover:text-tea-ink transition">
                     Chén Khải & Chén Quân
@@ -731,7 +731,7 @@
                 <h4 class="text-xs uppercase tracking-[0.2em] text-white font-medium mb-4">Bộ Sưu Tập</h4>
                 <ul class="space-y-2.5 text-sm text-tea-bg/70 font-light">
                     <li><button onclick="quickCategoryFilter('tra')" class="hover:text-white transition">Trà Tuyển Chọn (Hồng trà, Phổ nhĩ...)</button></li>
-                    <li><button onclick="quickCategoryFilter('am-tu-sa')" class="hover:text-white transition">Ấm Tử Sa Nghi Hưng</button></li>
+                    <li><button onclick="quickCategoryFilter('am')" class="hover:text-white transition">Ấm Trà</button></li>
                     <li><button onclick="quickCategoryFilter('chen-tong')" class="hover:text-white transition">Chén Khải & Chén Quân</button></li>
                     <li><button onclick="quickCategoryFilter('khay-tra')" class="hover:text-white transition">Khay Trà Gỗ Óc Chó / Đá</button></li>
                     <li><button onclick="quickCategoryFilter('dung-cu')" class="hover:text-white transition">Bộ Lục Quân Tử & Phụ Kiện</button></li>
@@ -938,8 +938,8 @@
             {
                 id: 'tc-01',
                 name: 'Ấm Tử Sa Tây Thi Nghi Hưng',
-                category: 'am-tu-sa',
-                categoryName: 'Ấm Tử Sa & Ấm Trà',
+                category: 'am',
+                categoryName: 'Ấm Trà',
                 material: 'dat-tu-sa',
                 materialName: 'Đất Đại Hồng Bào',
                 spec: 'Đất Đại Hồng Bào • 220ml',
@@ -1002,8 +1002,8 @@
             {
                 id: 'tc-05',
                 name: 'Ấm Thủy Tinh Chịu Nhiệt Tay Gỗ',
-                category: 'am-tu-sa',
-                categoryName: 'Ấm Tử Sa & Ấm Trà',
+                category: 'am',
+                categoryName: 'Ấm Trà',
                 material: 'thuy-tinh',
                 materialName: 'Thủy Tinh Borosilicate',
                 spec: 'Thủy tinh & Gỗ trắc • 450ml',
@@ -1191,7 +1191,7 @@
                     const name = String(getVal(1) || '').trim();
                     if (!name || name.toLowerCase() === 'name') return null;
 
-                    const category = String(getVal(2) || 'am-tu-sa').trim();
+                    const category = String(getVal(2) || 'am').trim();
                     const material = String(getVal(3) || 'dat-tu-sa').trim();
                     const materialName = String(getVal(4) || '').trim();
                     const spec = String(getVal(5) || '').trim();
@@ -1780,7 +1780,7 @@
         // ===================================================================
         const CATEGORY_LABELS = {
             'tra': 'Trà Tuyển Chọn',
-            'am-tu-sa': 'Ấm Tử Sa & Ấm Trà',
+            'am': 'Ấm Trà',
             'chen-tong': 'Chén Khải & Chén Quân',
             'khay-tra': 'Khay Trà Gỗ/Đá',
             'dung-cu': 'Dụng Cụ Pha Trà'
